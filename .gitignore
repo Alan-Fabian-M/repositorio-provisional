@@ -1,0 +1,53 @@
+# Entornos virtuales
+venv/
+.env/
+.venv/
+ENV/
+env/
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Archivos de migraciones
+migrations/versions/
+*.sqlite3
+*.db
+
+# Archivos de configuración sensibles
+.env
+instance/
+*.cfg
+*.ini
+
+# Archivos de logs
+*.log
+
+# Archivos de cache de editor
+*.swp
+*.bak
+*.tmp
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# MacOS
+.DS_Store
+
+# Archivos de cobertura de pruebas
+htmlcov/
+.coverage
+.tox/
+
+# Archivos de test o cobertura
+.pytest_cache/
+
+# Archivos compilados
+dist/
+build/
+*.egg-info/
