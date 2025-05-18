@@ -4,7 +4,7 @@ ns = Namespace('auth', description='Autenticación de usuarios')
 
 
 login_model = ns.model('Login', {
-    'ci': fields.String(required=True, description='Carnet de identidad'),
+    'gmail': fields.String(required=True, description='Carnet de identidad'),
     'contrasena': fields.String(required=True, description='Contraseña')
 })
 

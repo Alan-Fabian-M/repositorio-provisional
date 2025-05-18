@@ -30,10 +30,12 @@ def create_app():
     # Registrar Blueprints (rutas)
     from .routes.Estudiante_Routes import ns as estudiante_ns
     from .routes.Authentication_Routes import ns as authentication_ns
+    from .routes.Docente_Routes import ns as docente_ns
     
 
     api.add_namespace(estudiante_ns)
     api.add_namespace(authentication_ns)
+    api.add_namespace(docente_ns)
     
     
     return app
