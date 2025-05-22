@@ -5,6 +5,7 @@ class Estudiante(db.Model):
     ci = db.Column(db.Integer, unique = True, primary_key=True)
     nombreCompleto = db.Column(db.String(50))
     fechaNacimiento = db.Column(db.Date)
-    contrasena = db.Column(db.String(255))
     apoderado = db.Column(db.String(255))
     telefono = db.Column(db.String(50))
+    imagen_url = db.Column(db.String(500))
+    imagen_public_id = db.Column(db.String(500))

@@ -1,8 +1,6 @@
 from flask import Flask, request, jsonify
-from .extensions import db, jwt, ma, api, mi, cors
+from .extensions import db, jwt, ma, api, mi, cors, cloudinary
 from .config import Config
-from flask_restx import Api
-from flask_jwt_extended import JWTManager, verify_jwt_in_request
 
 
 def create_app():
@@ -16,15 +14,21 @@ def create_app():
     # Inicializar extensiones
     db.init_app(app)
     jwt.init_app(app)
-    
-    # Lista de rutas públicas
-    
-    
     ma.init_app(app)
     mi.init_app(app, db)
     api.init_app(app)
     cors.init_app(app)
     
+    # Elimina cualquier configuración previa  # Acceso directo a la configuración interna
+
+    # Configuración directa y explícita
+    cloudinary.config(
+        cloud_name="dozywphod",
+        api_key='441626374645742',
+        api_secret='qJAFgRUbyHSVc_SitfIXj0ELXFI',
+        secure=True
+    )
+
     
     
     # Registrar Blueprints (rutas)

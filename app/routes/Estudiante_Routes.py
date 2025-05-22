@@ -5,10 +5,12 @@ from app import db
 from werkzeug.security import generate_password_hash
 from flask_jwt_extended import jwt_required
 from flask_restx import Namespace, Resource
-from ..api_model.Estudiante import ns, estudiante_model_request, estudiante_model_response
-from datetime import datetime
-
-
+from ..api_model.Estudiante import (ns, estudiante_model_request, 
+                                   estudiante_model_response,
+                                   upload_parser,
+                                   estudiante_image_response)
+from ..api_model.parsers import upload_parser, estudiante_parser
+import cloudinary.uploader
 
 estudiante_schema = EstudianteSchema()
 estudiantes_schema = EstudianteSchema(many=True)
@@ -22,19 +24,38 @@ class EstudianteList(Resource):
         estudiantes = Estudiante.query.all()
         return estudiantes_schema.dump(estudiantes)
 
+    @ns.expect(estudiante_parser)
     @ns.marshal_with(estudiante_model_response)
-    @ns.expect(estudiante_model_request)
     def post(self):
-        """Crea un nuevo estudiante"""
-        data = request.json
+        """Crea nuevo estudiante con imagen opcional"""
+        args = estudiante_parser.parse_args()
+        
+        # Verificar si el estudiante ya existe
+        if Estudiante.query.get(args['ci']):
+            ns.abort(400, "Ya existe un estudiante con esta cédula")
 
-        required_fields = ['nombreCompleto', 'ci', 'contrasena']
-        for field in required_fields:
-            if field not in data:
-                ns.abort(400, f"El campo '{field}' es requerido")
+        # Crear el estudiante
+        nuevo_estudiante = Estudiante(
+            nombreCompleto=args['nombreCompleto'],
+            ci=args['ci'],
+            # contrasena=generate_password_hash(args['contrasena']),
+            fechaNacimiento=args['fechaNacimiento'],
+            apoderado=args.get('apoderado'),
+            telefono=args.get('telefono')
+        )
 
-        data['contrasena'] = generate_password_hash(data['contrasena'])
-        nuevo_estudiante = estudiante_schema.load(data)
+        # Manejar la imagen si fue enviada
+        if args['file']:
+            try:
+                # print("Cloudinary config:", {
+                # 'cloud_name': cloudinary.config().cloud_name,
+                # 'api_key': cloudinary.config().api_key
+                # }) 
+                upload_result = cloudinary.uploader.upload(args['file'])
+                nuevo_estudiante.imagen_url = upload_result['secure_url']
+                nuevo_estudiante.imagen_public_id = upload_result['public_id']
+            except Exception as e:
+                ns.abort(500, f"Error al subir imagen: {str(e)}")
 
         try:
             db.session.add(nuevo_estudiante)
@@ -42,7 +63,7 @@ class EstudianteList(Resource):
             return estudiante_schema.dump(nuevo_estudiante), 201
         except Exception as e:
             db.session.rollback()
-            ns.abort(500, f"Error al crear el estudiante: {str(e)}")
+            ns.abort(500, f"Error al crear estudiante: {str(e)}")
 
 
 @ns.route('/<int:ci>')
@@ -65,6 +86,10 @@ class EstudianteResource(Resource):
 
         if 'contrasena' in data:
             data['contrasena'] = generate_password_hash(data['contrasena'])
+        
+        # No permitir actualización directa de imagen_url o public_id
+        if 'imagen_url' in data or 'imagen_public_id' in data:
+            ns.abort(400, 'Use el endpoint /upload-image para actualizar imágenes')
 
         for key, value in data.items():
             if hasattr(estudiante, key):
@@ -76,8 +101,6 @@ class EstudianteResource(Resource):
         except Exception as e:
             db.session.rollback()
             ns.abort(500, f"Error al actualizar: {str(e)}")
-            
-        return Estudiante.query.get_or_404(ci)
 
     @jwt_required()
     def delete(self, ci):
@@ -105,14 +128,68 @@ class EstudianteBuscar(Resource):
         return estudiantes_schema.dump(estudiantes)
 
 
-# @ns.route('/validar-correo')
-# class ValidarCorreo(Resource):
-#     @ns.doc(params={'gmail': 'Correo a validar'})
-#     def post(self):
-#         """Validar si un correo ya existe"""
-#         gmail = request.json.get('gmail')
-#         if not gmail:
-#             ns.abort(400, "Correo no proporcionado")
+@ns.route('/<int:ci>/upload-image')
+@ns.response(404, 'Estudiante no encontrado')
+class EstudianteImageUpload(Resource):
+    @ns.doc(security='Bearer')
+    @jwt_required()
+    @ns.expect(upload_parser)
+    @ns.marshal_with(estudiante_image_response)
+    def put(self, ci):
+        """Sube/actualiza la imagen de un estudiante"""
+        estudiante = Estudiante.query.get_or_404(ci)
+        args = upload_parser.parse_args()
+        file = args['file']
+        
+        # Si ya tiene una imagen, la eliminamos de Cloudinary primero
+        if estudiante.imagen_public_id:
+            try:
+                cloudinary.uploader.destroy(estudiante.imagen_public_id)
+            except:
+                pass  # Si falla, continuamos igual
+        
+        # Subir nueva imagen
+        try:
+            upload_result = cloudinary.uploader.upload(file)
+            estudiante.imagen_url = upload_result.get('secure_url')
+            estudiante.imagen_public_id = upload_result.get('public_id')
+            db.session.commit()
+            
+            return {
+                'ci': estudiante.ci,
+                'nombreCompleto': estudiante.nombreCompleto,
+                'imagen_url': estudiante.imagen_url,
+                'message': 'Imagen actualizada correctamente'
+            }
+        except Exception as e:
+            db.session.rollback()
+            ns.abort(500, f"Error al subir la imagen: {str(e)}")
 
-#         existe = Estudiante.query.filter_by(gmail=gmail).first() is not None
-#         return {"existe": existe}
+@ns.route('/<int:ci>/delete-image')
+@ns.response(404, 'Estudiante no encontrado')
+class EstudianteImageDelete(Resource):
+    @ns.doc(security='Bearer')
+    @jwt_required()
+    @ns.marshal_with(estudiante_image_response)
+    def delete(self, ci):
+        """Elimina la imagen de un estudiante"""
+        estudiante = Estudiante.query.get_or_404(ci)
+        
+        if not estudiante.imagen_public_id:
+            ns.abort(400, 'El estudiante no tiene imagen asociada')
+            
+        try:
+            cloudinary.uploader.destroy(estudiante.imagen_public_id)
+            estudiante.imagen_url = None
+            estudiante.imagen_public_id = None
+            db.session.commit()
+            
+            return {
+                'ci': estudiante.ci,
+                'nombreCompleto': estudiante.nombreCompleto,
+                'imagen_url': None,
+                'message': 'Imagen eliminada correctamente'
+            }
+        except Exception as e:
+            db.session.rollback()
+            ns.abort(500, f"Error al eliminar la imagen: {str(e)}")

@@ -8,7 +8,6 @@ class EstudianteSchema(SQLAlchemyAutoSchema):
     class Meta:
         model = Estudiante
         load_instance = True
-        # exclude = ['contrasena']
         sqla_session = db.session
 
 
