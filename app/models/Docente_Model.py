@@ -7,3 +7,6 @@ class Docente(db.Model):
     gmail = db.Column(db.String(50))
     contrasena = db.Column(db.String(255))
     esDocente = db.Column(db.Boolean)
+    
+    # Relación con DocenteMateria
+    materias = db.relationship('DocenteMateria', back_populates='docente', lazy=True)

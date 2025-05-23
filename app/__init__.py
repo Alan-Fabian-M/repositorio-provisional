@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify
 from .extensions import db, jwt, ma, api, mi, cors, cloudinary
 from .config import Config
+from . import models
+
 
 
 def create_app():
