@@ -7,11 +7,11 @@ from flask_cors import CORS
 import cloudinary
 
 authorizations = {
-    'Bearer': {
+    'Token': {
         'type': 'apiKey',
         'in': 'header',
         'name': 'Authorization',
-        'description': 'Introduce el JWT con el formato **Bearer &lt;token&gt;**'
+        'description': 'Solo introduce el token (sin Bearer)'
     }
 }
 
@@ -20,7 +20,7 @@ api = Api(
     version="1.0",
     description="API RESTful para la gestión de estudiantes",
     authorizations=authorizations,
-    security='Bearer'
+    security='Token'
 )
 
 db = SQLAlchemy()

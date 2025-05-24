@@ -8,6 +8,7 @@ from . import models
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
+    app.config["JWT_HEADER_TYPE"] = ""
 
     
     # Debug: Verificar configuración cargada
