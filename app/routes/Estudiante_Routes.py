@@ -1,4 +1,7 @@
 from ..models.Estudiante_Model import Estudiante
+from ..models.MateriaCurso_Model import MateriaCurso
+from ..models.Inscripcion_Model import Inscripcion
+from ..models.DocenteMateria_Model import DocenteMateria
 from ..schemas.Estudiante_schema import EstudianteSchema
 from flask import request 
 from app import db
@@ -193,3 +196,45 @@ class EstudianteImageDelete(Resource):
         except Exception as e:
             db.session.rollback()
             ns.abort(500, f"Error al eliminar la imagen: {str(e)}")
+            
+@ns.route('/filtrar-estudiantes')
+class EstudiantesFiltrados(Resource):
+    @jwt_required()
+    @ns.doc(params={
+        'docente_ci': 'CI del docente',
+        'materia_id': 'ID de la materia',
+        'curso_id': 'ID del curso'
+    })
+    def get(self):
+        """Filtra estudiantes por docente, materia y curso"""
+        docente_ci = request.args.get('docente_ci', type=int)
+        materia_id = request.args.get('materia_id', type=int)
+        curso_id = request.args.get('curso_id', type=int)
+
+        if not all([docente_ci, materia_id, curso_id]):
+            return {'message': 'Faltan parámetros'}, 400
+
+        # Subconsulta para validar que ese docente da esa materia
+        dm = DocenteMateria.query.filter_by(
+            docente_ci=docente_ci,
+            materia_id=materia_id
+        ).first()
+
+        if not dm:
+            return {'message': 'El docente no enseña esa materia'}, 404
+
+        # Verificar que la materia esté en ese curso
+        mc = MateriaCurso.query.filter_by(
+            materia_id=materia_id,
+            curso_id=curso_id
+        ).first()
+
+        if not mc:
+            return {'message': 'La materia no pertenece a ese curso'}, 404
+
+        # Buscar inscripciones al curso
+        inscripciones = Inscripcion.query.filter_by(curso_id=curso_id).all()
+
+        estudiantes = [ins.estudiante for ins in inscripciones]
+
+        return estudiantes_schema.dump(estudiantes), 200

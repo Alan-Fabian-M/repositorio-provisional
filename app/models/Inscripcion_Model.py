@@ -7,3 +7,6 @@ class Inscripcion(db.Model):
     fecha = db.Column(db.Date)
     estudiante_ci = db.Column(db.Integer, db.ForeignKey('estudiante.ci'))
     curso_id = db.Column(db.Integer, db.ForeignKey('curso.id'))
+    
+    estudiante = db.relationship('Estudiante', backref='inscripciones')
+    curso = db.relationship('Curso', backref='inscripciones')
