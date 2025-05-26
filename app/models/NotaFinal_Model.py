@@ -6,3 +6,5 @@ class NotaFinal(db.Model):
     valor = db.Column(db.Float)
     estudiante_ci = db.Column(db.Integer, db.ForeignKey('estudiante.ci'))
     materia_id = db.Column(db.Integer, db.ForeignKey('materia.id'))
+    gestion_id = db.Column(db.Integer, db.ForeignKey('gestion.id'))
+    

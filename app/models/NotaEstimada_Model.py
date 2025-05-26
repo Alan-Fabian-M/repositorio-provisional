@@ -7,3 +7,4 @@ class NotaEstimada(db.Model):
     razon_estimacion = db.Column(db.Text)
     estudiante_ci = db.Column(db.Integer, db.ForeignKey('estudiante.ci'))
     materia_id = db.Column(db.Integer, db.ForeignKey('materia.id'))
+    gestion_id = db.Column(db.Integer, db.ForeignKey('gestion.id'))

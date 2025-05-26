@@ -87,3 +87,15 @@ class EvaluacionesPorEstudiante(Resource):
         if not evaluaciones:
             ns.abort(404, f"No se encontraron evaluaciones para el estudiante con CI {estudiante_ci}")
         return evaluaciones_schema.dump(evaluaciones)
+
+
+@ns.route('/estudiante/<int:estudiante_ci>/NotaAsistenciaFinal')
+class EvaluacionesPorEstudiante(Resource):
+    @ns.marshal_list_with(evaluacion_model_response)
+    @jwt_required()
+    def get(self, estudiante_ci):
+        """Buscar evaluaciones por CI del estudiante"""
+        evaluaciones = Evaluacion.query.filter_by(estudiante_ci=estudiante_ci).all()
+        if not evaluaciones:
+            ns.abort(404, f"No se encontraron evaluaciones para el estudiante con CI {estudiante_ci}")
+        return evaluaciones_schema.dump(evaluaciones)
