@@ -1,4 +1,7 @@
 from ..models.Curso_Model import Curso
+from ..models.Docente_Model import Docente
+from ..models.MateriaCurso_Model import MateriaCurso
+from ..models.DocenteMateria_Model import DocenteMateria
 from ..schemas.Curso_schema import CursoSchema
 from flask import request
 from app import db
@@ -91,3 +94,25 @@ class CursoBuscar(Resource):
         if not cursos:
             ns.abort(404, f"No se encontraron cursos con nombre '{nombre}'")
         return cursos_schema.dump(cursos)
+
+@ns.route('/CursoDocente/<int:docente_ci>')
+@ns.param('docente_ci', 'Cursos a buscar por Ci docente')
+class CursoBuscarXDocenteCi(Resource):
+    @ns.marshal_list_with(curso_model_response)
+    @jwt_required()
+    def get(self, docente_ci):
+        docente = Docente.query.get(docente_ci)
+        if not docente:
+            return {'mensaje': 'Docente no encontrado'}, 404
+
+        cursos = db.session.query(Curso)\
+            .join(MateriaCurso, Curso.id == MateriaCurso.curso_id)\
+            .join(DocenteMateria, 
+                  (MateriaCurso.materia_id == DocenteMateria.materia_id) & 
+                  (DocenteMateria.docente_ci == docente_ci))\
+            .distinct().all()
+
+        if not cursos:
+            return {'mensaje': 'El docente no tiene cursos asignados'}, 404
+
+        return cursos_schema.dump(list(cursos)), 200
