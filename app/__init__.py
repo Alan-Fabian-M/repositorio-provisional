@@ -47,7 +47,7 @@ def create_app():
     from .routes.MateriaCurso_Routes import ns as materiaCruso_ns
     from .routes.NotaEstimada_Routes import ns as notaEstimada_ns
     from .routes.NotaFinal_Routes import ns as notaFinal_ns
-    from .routes.Porcentaje_Routes import ns as porcentaje_ns
+    from .routes.EvaluacionIntegral_Routes import ns as porcentaje_ns
     from .routes.TipoEvaluacion_Routes import ns as tipoEvaluacion_ns
     
     

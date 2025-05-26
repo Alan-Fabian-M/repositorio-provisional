@@ -8,6 +8,5 @@ class Evaluacion(db.Model):
     nota = db.Column(db.Float)
 
     tipo_evaluacion_id = db.Column(db.Integer, db.ForeignKey('tipo_evaluacion.id'))
-    porcentaje_id = db.Column(db.Integer, db.ForeignKey('porcentaje.id'))
     estudiante_ci = db.Column(db.Integer, db.ForeignKey('estudiante.ci'))
     materia_id = db.Column(db.Integer, db.ForeignKey('materia.id'))
