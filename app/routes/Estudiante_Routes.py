@@ -1,6 +1,9 @@
 from ..models.Estudiante_Model import Estudiante
 from ..models.MateriaCurso_Model import MateriaCurso
 from ..models.Inscripcion_Model import Inscripcion
+from ..models.Evaluacion_Model import Evaluacion
+from ..models.EvaluacionIntegral_Model import EvaluacionIntegral
+from ..models.TipoEvaluacion_Model import TipoEvaluacion
 from ..models.DocenteMateria_Model import DocenteMateria
 from ..schemas.Estudiante_schema import EstudianteSchema
 from flask import request 
@@ -14,6 +17,7 @@ from ..api_model.Estudiante import (ns, estudiante_model_request,
                                    estudiante_image_response)
 from ..api_model.parsers import upload_parser, estudiante_parser
 import cloudinary.uploader
+from sqlalchemy import func
 
 estudiante_schema = EstudianteSchema()
 estudiantes_schema = EstudianteSchema(many=True)
@@ -238,3 +242,98 @@ class EstudiantesFiltrados(Resource):
         estudiantes = [ins.estudiante for ins in inscripciones]
 
         return estudiantes_schema.dump(estudiantes), 200
+
+
+@ns.route('/boletin/gestion/<int:gestion_id>/materia/<int:materia_id>/curso/<int:curso_id>')
+class BoletinPorMateria(Resource):
+    @jwt_required()
+    def get(self, gestion_id, materia_id, curso_id):
+        """Retorna un boletín por materia, gestión y curso con notas por estudiante"""
+        
+        # Verificar que la materia esté asignada al curso
+        mc = MateriaCurso.query.filter_by(
+            materia_id=materia_id,
+            curso_id=curso_id
+        ).first()
+        if not mc:
+            return {'mensaje': 'La materia no pertenece a ese curso'}, 404
+
+        # Obtener inscripciones al curso
+        inscripciones = Inscripcion.query.filter_by(curso_id=curso_id).all()
+        estudiantes = [ins.estudiante for ins in inscripciones]
+
+        resultado = []
+
+        for estudiante in estudiantes:
+            ser = getSer(estudiante.ci, gestion_id, materia_id)
+            hacer = getHacer(estudiante.ci, gestion_id, materia_id)
+            saber = getSaber(estudiante.ci, gestion_id, materia_id)
+            decidir = getDecidir(estudiante.ci, gestion_id, materia_id)
+
+            # Si alguna nota vino como error (tupla), la manejamos
+            def nota_valida(valor):
+                if isinstance(valor, dict) and "Nota" in valor:
+                    return valor["Nota"]
+                return 0  # Por defecto si hubo error
+
+            ser_nota = nota_valida(ser)
+            hacer_nota = nota_valida(hacer)
+            saber_nota = nota_valida(saber)
+            decidir_nota = nota_valida(decidir)
+
+            promedio = round((ser_nota + hacer_nota + saber_nota + decidir_nota) / 4, 2)
+
+            resultado.append({
+                "ci": estudiante.ci,
+                "nombreCompleto": estudiante.nombreCompleto,
+                "ser": ser_nota,
+                "hacer": hacer_nota,
+                "saber": saber_nota,
+                "decidir": decidir_nota,
+                "nota_final": promedio
+            })
+
+        return resultado, 200
+
+
+def getSer(estudiante_ci, gestion_id, materia_id):
+    return NotaFinalDe(estudiante_ci, gestion_id, materia_id, "ser")
+
+def getHacer(estudiante_ci, gestion_id, materia_id):
+    return NotaFinalDe(estudiante_ci, gestion_id, materia_id, "hacer")
+
+def getDecidir(estudiante_ci, gestion_id, materia_id):
+    return NotaFinalDe(estudiante_ci, gestion_id, materia_id, "decidir")
+
+def getSaber(estudiante_ci, gestion_id, materia_id):
+    return NotaFinalDe(estudiante_ci, gestion_id, materia_id, "saber")
+
+def NotaFinalDe(estudiante_ci, gestion_id, materia_id, tipoDeEvaluacionIntegral):
+    # Buscar la EvaluacionIntegral que se llama "ser"
+    evaluacion_integral = EvaluacionIntegral.query.filter(func.lower(EvaluacionIntegral.nombre) == tipoDeEvaluacionIntegral).first()
+    if not evaluacion_integral:
+        return {"mensaje": "evaluacion integral no encontrada"}, 404
+
+    # Obtener los tipos de evaluación relacionados al SER
+    tipos_ser = TipoEvaluacion.query.filter_by(evaluacion_integral_id=evaluacion_integral.id).all()
+    tipo_ids = [tipo.id for tipo in tipos_ser]
+
+    if not tipo_ids:
+        return {"Nota": 0}, 404
+
+    # Buscar todas las evaluaciones del estudiante en esa materia y gestión que correspondan al SER
+    evaluaciones = Evaluacion.query.filter(
+        Evaluacion.estudiante_ci == estudiante_ci,
+        Evaluacion.materia_id == materia_id,
+        Evaluacion.gestion_id == gestion_id,
+        Evaluacion.tipo_evaluacion_id.in_(tipo_ids)
+    ).all()
+
+    if not evaluaciones:
+        return {"mensaje": "No se encontraron evaluaciones de la evaluacion integral"}, 404
+
+    # Calcular la suma de notas
+    suma = sum(eva.nota for eva in evaluaciones)
+    promedio = suma / len(evaluaciones)
+
+    return {"Nota": promedio}

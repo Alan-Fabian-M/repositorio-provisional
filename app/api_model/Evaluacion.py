@@ -8,9 +8,9 @@ evaluacion_model_request = ns.model('EvaluacionRequest', {
     'fecha': fields.Date(required=True, description='Fecha'),
     'nota': fields.Float(required=True, description='Nota'),
     'tipo_evaluacion_id': fields.Integer(required=True, description='ID del tipo de evaluación'),
-    'porcentaje_id': fields.Integer(required=True, description='ID del porcentaje'),
     'estudiante_ci': fields.Integer(required=True, description='CI del estudiante'),
     'materia_id': fields.Integer(required=True, description='ID de la materia'),
+    'gestion_id': fields.Integer(required=True, description='ID de la gestion')
 })
 
 evaluacion_model_response = ns.model('EvaluacionResponse', {
@@ -19,7 +19,10 @@ evaluacion_model_response = ns.model('EvaluacionResponse', {
     'fecha': fields.Date(required=True, description='Fecha'),
     'nota': fields.Float(required=True, description='Nota'),
     'tipo_evaluacion_id': fields.Integer(required=True, description='ID del tipo de evaluación'),
-    'porcentaje_id': fields.Integer(required=True, description='ID del porcentaje'),
     'estudiante_ci': fields.Integer(required=True, description='CI del estudiante'),
     'materia_id': fields.Integer(required=True, description='ID de la materia'),
+    'gestion_id': fields.Integer(required=True, description='ID de la gestion'),
 })
+
+
+

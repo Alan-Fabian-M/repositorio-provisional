@@ -2,15 +2,17 @@ from ..models.Gestion_Model import Gestion
 from ..models.NotaFinal_Model import NotaFinal
 from ..models.NotaEstimada_Model import NotaEstimada
 from ..models.Estudiante_Model import Estudiante
-from ..models.Materia_Model import Materia
+from ..models.TipoEvaluacion_Model import TipoEvaluacion
 from ..schemas.Gestion_schema import GestionSchema
 from ..models.MateriaCurso_Model import MateriaCurso
 from ..models.Inscripcion_Model import Inscripcion
+from ..models.Evaluacion_Model import Evaluacion
 from flask import request
 from app import db
 from flask_jwt_extended import jwt_required
 from flask_restx import Namespace, Resource
 from ..api_model.Gestion import ns, gestion_model_request, gestion_model_response
+from datetime import date 
 
 gestion_schema = GestionSchema()
 gestiones_schema = GestionSchema(many=True)
@@ -96,6 +98,8 @@ class GestionWithNotas(Resource):
 
             estudiantes = Estudiante.query.all()
 
+            tipoEvaluacionId = TipoEvaluacion.query.filter_by(nombre = 'Asistencia-Final').first()
+            
             for est in estudiantes:
                 # Obtener la inscripción activa del estudiante (última o principal)
                 inscripcion = Inscripcion.query.filter_by(estudiante_ci=est.ci).order_by(Inscripcion.fecha.desc()).first()
@@ -130,6 +134,17 @@ class GestionWithNotas(Resource):
                         materia_id=materia.id
                     )
                     db.session.add(nota_estimada)
+                    
+                    evaluacion = Evaluacion(
+                        descripcion="nota de asistencia final",
+                        fecha=date.today(),
+                        nota=0.0,
+                        tipo_evaluacion_id=tipoEvaluacionId.id,
+                        estudiante_ci=est.ci,
+                        materia_id=materia.id,
+                        gestion_id=nueva_gestion.id
+                    )
+                    db.session.add(evaluacion)
 
             db.session.commit()
             return gestion_schema.dump(nueva_gestion), 201
