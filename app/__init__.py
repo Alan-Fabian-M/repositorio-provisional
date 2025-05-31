@@ -10,7 +10,6 @@ def create_app():
     app.config.from_object(Config)
     app.config["JWT_HEADER_TYPE"] = ""
 
-    
     # Debug: Verificar configuración cargada
     print("DB URI:", app.config.get('SQLALCHEMY_DATABASE_URI'))
 
@@ -21,6 +20,19 @@ def create_app():
     mi.init_app(app, db)
     api.init_app(app)
     cors.init_app(app)
+    
+    with app.app_context():
+        # Crear todas las tablas si no existen
+        db.create_all()
+        
+        # Verificar si las tablas específicas están vacías
+        from .models.TipoEvaluacion_Model import TipoEvaluacion
+        from .models.EvaluacionIntegral_Model import EvaluacionIntegral
+        
+        if TipoEvaluacion.query.count() == 0 and EvaluacionIntegral.query.count() == 0:
+            # Solo ejecutar los seeders si ambas tablas están vacías
+            from .seeds import run_seeders
+            run_seeders()
     
     # Elimina cualquier configuración previa  # Acceso directo a la configuración interna
 

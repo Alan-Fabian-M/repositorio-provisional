@@ -204,7 +204,7 @@ class PasarNotasDeEvaluacionANotaFinal(Resource):
                             materia_id=materia_id,
                             gestion_id=gestion_id,
                             valor=promedio
-                        )
+                        )   
                         db.session.add(nota_final)
 
                     total_procesados += 1
@@ -289,6 +289,7 @@ class AsistenciaPost(Resource):
     def post(self):
         """Crea una nueva evaluación de asistencia diaria, actualiza asistencia final y recalcula nota final"""
         data = request.json
+        data['tipo_evaluacion_id'] = 1  # ID fijo para Asistencia-Diaria
         nueva_evaluacion = evaluacion_schema.load(data)
 
         try:
@@ -296,13 +297,9 @@ class AsistenciaPost(Resource):
             db.session.add(nueva_evaluacion)
             db.session.commit()
 
-            # Actualizar o crear la evaluación de tipo 'Asistencia-Final'
-            idTipoEvaluacion = TipoEvaluacion.query.filter_by(nombre='Asistencia-Final').first()
-            if not idTipoEvaluacion:
-                ns.abort(400, "Tipo de evaluación 'Asistencia-Final' no existe")
-
+            # Actualizar o crear la evaluación de tipo Asistencia-Final (ID fijo = 2)
             tipoAsistenciaFinal = Evaluacion.query.filter_by(
-                tipo_evaluacion_id=idTipoEvaluacion.id,
+                tipo_evaluacion_id=2,  # ID fijo para Asistencia-Final
                 estudiante_ci=data["estudiante_ci"],
                 materia_id=data["materia_id"],
                 gestion_id=data["gestion_id"]
@@ -316,7 +313,7 @@ class AsistenciaPost(Resource):
                     estudiante_ci=data["estudiante_ci"],
                     materia_id=data["materia_id"],
                     gestion_id=data["gestion_id"],
-                    tipo_evaluacion_id=idTipoEvaluacion.id,
+                    tipo_evaluacion_id=2,  # ID fijo para Asistencia-Final
                     nota=nota_asistencia_final
                 )
                 db.session.add(tipoAsistenciaFinal)
@@ -386,15 +383,11 @@ class AsistenciaFinal(Resource):
         return AsistenciaFinal(estudiante_ci, gestion_id, materia_id)
     
 def AsistenciaFinal(estudiante_ci, gestion_id, materia_id):
-    tipoEvaluacion = TipoEvaluacion.query.filter_by(nombre="Asistencia-Diaria").first()
-    if not tipoEvaluacion:
-        return {"mensaje": "Tipo de evaluación 'Asistencia-Diaria' no encontrado"}, 404
-
     evaluaciones = Evaluacion.query.filter_by(
         estudiante_ci=estudiante_ci,
         materia_id=materia_id,
         gestion_id=gestion_id,
-        tipo_evaluacion_id=tipoEvaluacion.id
+        tipo_evaluacion_id=1  # ID fijo para Asistencia-Diaria
     ).all()
 
     if not evaluaciones:
@@ -409,53 +402,53 @@ def AsistenciaFinal(estudiante_ci, gestion_id, materia_id):
 
 
     
-@ns.route('/ser-final/estudiante/<int:estudiante_ci>/gestion/<int:gestion_id>/materia/<int:materia_id>')
-@ns.doc(params={
-    'estudiante_ci': 'CI del estudiante',
-    'gestion_id': 'ID de la gestión',
-    'materia_id': 'ID de la materia'
-})
-class EvaluacionFinalSer(Resource):
+# @ns.route('/ser-final/estudiante/<int:estudiante_ci>/gestion/<int:gestion_id>/materia/<int:materia_id>')
+# @ns.doc(params={
+#     'estudiante_ci': 'CI del estudiante',
+#     'gestion_id': 'ID de la gestión',
+#     'materia_id': 'ID de la materia'
+# })
+# class EvaluacionFinalSer(Resource):
 
-    @jwt_required()
-    def get(self, estudiante_ci, gestion_id, materia_id):
-        return NotaFinalDe(estudiante_ci, gestion_id, materia_id, "ser")
+#     @jwt_required()
+#     def get(self, estudiante_ci, gestion_id, materia_id):
+#         return NotaFinalDe(estudiante_ci, gestion_id, materia_id, "ser")
     
-@ns.route('/hacer-final/estudiante/<int:estudiante_ci>/gestion/<int:gestion_id>/materia/<int:materia_id>')
-@ns.doc(params={
-    'estudiante_ci': 'CI del estudiante',
-    'gestion_id': 'ID de la gestión',
-    'materia_id': 'ID de la materia'
-})
-class EvaluacionFinalHacer(Resource):
+# @ns.route('/hacer-final/estudiante/<int:estudiante_ci>/gestion/<int:gestion_id>/materia/<int:materia_id>')
+# @ns.doc(params={
+#     'estudiante_ci': 'CI del estudiante',
+#     'gestion_id': 'ID de la gestión',
+#     'materia_id': 'ID de la materia'
+# })
+# class EvaluacionFinalHacer(Resource):
 
-    @jwt_required()
-    def get(self, estudiante_ci, gestion_id, materia_id):
-        return NotaFinalDe(estudiante_ci, gestion_id, materia_id, "hacer")
+#     @jwt_required()
+#     def get(self, estudiante_ci, gestion_id, materia_id):
+#         return NotaFinalDe(estudiante_ci, gestion_id, materia_id, "hacer")
     
-@ns.route('/decidir-final/estudiante/<int:estudiante_ci>/gestion/<int:gestion_id>/materia/<int:materia_id>')
-@ns.doc(params={
-    'estudiante_ci': 'CI del estudiante',
-    'gestion_id': 'ID de la gestión',
-    'materia_id': 'ID de la materia'
-})
-class EvaluacionFinalDecidir(Resource):
+# @ns.route('/decidir-final/estudiante/<int:estudiante_ci>/gestion/<int:gestion_id>/materia/<int:materia_id>')
+# @ns.doc(params={
+#     'estudiante_ci': 'CI del estudiante',
+#     'gestion_id': 'ID de la gestión',
+#     'materia_id': 'ID de la materia'
+# })
+# class EvaluacionFinalDecidir(Resource):
 
-    @jwt_required()
-    def get(self, estudiante_ci, gestion_id, materia_id):
-        return NotaFinalDe(estudiante_ci, gestion_id, materia_id, "decidir")
+#     @jwt_required()
+#     def get(self, estudiante_ci, gestion_id, materia_id):
+#         return NotaFinalDe(estudiante_ci, gestion_id, materia_id, "decidir")
     
-@ns.route('/saber-final/estudiante/<int:estudiante_ci>/gestion/<int:gestion_id>/materia/<int:materia_id>')
-@ns.doc(params={
-    'estudiante_ci': 'CI del estudiante',
-    'gestion_id': 'ID de la gestión',
-    'materia_id': 'ID de la materia'
-})
-class EvaluacionFinalSaber(Resource):
+# @ns.route('/saber-final/estudiante/<int:estudiante_ci>/gestion/<int:gestion_id>/materia/<int:materia_id>')
+# @ns.doc(params={
+#     'estudiante_ci': 'CI del estudiante',
+#     'gestion_id': 'ID de la gestión',
+#     'materia_id': 'ID de la materia'
+# })
+# class EvaluacionFinalSaber(Resource):
 
-    @jwt_required()
-    def get(self, estudiante_ci, gestion_id, materia_id):
-        return NotaFinalDe(estudiante_ci, gestion_id, materia_id, "saber")
+#     @jwt_required()
+#     def get(self, estudiante_ci, gestion_id, materia_id):
+#         return NotaFinalDe(estudiante_ci, gestion_id, materia_id, "saber")
 
 
 
