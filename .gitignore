@@ -19,25 +19,34 @@ migrations/versions/
 # Archivos de configuración sensibles
 .env
 instance/
-*.cfg
-*.ini
 
-# Archivos de logs
+# Archivos temporales de testing y desarrollo
+test_*.py
+verify_*.py
+verificar_*.py
+check_*.py
+clean_*.py
+*_test.py
+*_check.py
+*_verify.py
+
+# Archivos comprimidos temporales
+*.rar
+*.zip
+*.tar.gz
+
+# Logs y archivos temporales
 *.log
-
-# Archivos de cache de editor
-*.swp
-*.bak
 *.tmp
-
-# VS Code
-.vscode/
-
-# PyCharm
-.idea/
-
-# MacOS
+*.temp
 .DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
 
 # Archivos de cobertura de pruebas
 htmlcov/

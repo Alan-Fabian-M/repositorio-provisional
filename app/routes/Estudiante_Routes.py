@@ -5,6 +5,9 @@ from ..models.Evaluacion_Model import Evaluacion
 from ..models.EvaluacionIntegral_Model import EvaluacionIntegral
 from ..models.TipoEvaluacion_Model import TipoEvaluacion
 from ..models.DocenteMateria_Model import DocenteMateria
+from ..models.Docente_Model import Docente
+from ..models.Materia_Model import Materia
+from ..models.Curso_Model import Curso
 from ..schemas.Estudiante_schema import EstudianteSchema
 from flask import request 
 from app import db
@@ -207,41 +210,66 @@ class EstudiantesFiltrados(Resource):
     @ns.doc(params={
         'docente_ci': 'CI del docente',
         'materia_id': 'ID de la materia',
-        'curso_id': 'ID del curso'
+        'curso_id': 'ID del curso',
+        'year': 'Año de inscripción (opcional, por defecto 2025)'
     })
+    @ns.marshal_list_with(estudiante_model_response)
     def get(self):
-        """Filtra estudiantes por docente, materia y curso"""
-        docente_ci = request.args.get('docente_ci', type=int)
-        materia_id = request.args.get('materia_id', type=int)
-        curso_id = request.args.get('curso_id', type=int)
+        """Filtra estudiantes por docente, materia y curso para un año específico"""
+        try:
+            docente_ci = request.args.get('docente_ci', type=int)
+            materia_id = request.args.get('materia_id', type=int)
+            curso_id = request.args.get('curso_id', type=int)
+            year = request.args.get('year', type=int, default=2025)
 
-        if not all([docente_ci, materia_id, curso_id]):
-            return {'message': 'Faltan parámetros'}, 400
+            # Validar parámetros requeridos
+            if not all([docente_ci, materia_id, curso_id]):
+                ns.abort(400, 'Faltan parámetros requeridos: docente_ci, materia_id, curso_id')            # Validar que el docente existe
+            docente = Docente.query.filter_by(ci=docente_ci).first()
+            if not docente:
+                ns.abort(404, 'Docente no encontrado')
 
-        # Subconsulta para validar que ese docente da esa materia
-        dm = DocenteMateria.query.filter_by(
-            docente_ci=docente_ci,
-            materia_id=materia_id
-        ).first()
+            # Validar que la materia existe
+            materia = Materia.query.get(materia_id)
+            if not materia:
+                ns.abort(404, 'Materia no encontrada')
 
-        if not dm:
-            return {'message': 'El docente no enseña esa materia'}, 404
+            # Validar que el curso existe
+            curso = Curso.query.get(curso_id)
+            if not curso:
+                ns.abort(404, 'Curso no encontrado')
 
-        # Verificar que la materia esté en ese curso
-        mc = MateriaCurso.query.filter_by(
-            materia_id=materia_id,
-            curso_id=curso_id
-        ).first()
+            # Validar que el docente enseña esa materia
+            dm = DocenteMateria.query.filter_by(
+                docente_ci=docente_ci,
+                materia_id=materia_id
+            ).first()
 
-        if not mc:
-            return {'message': 'La materia no pertenece a ese curso'}, 404
+            if not dm:
+                ns.abort(404, 'El docente no enseña esa materia')
 
-        # Buscar inscripciones al curso
-        inscripciones = Inscripcion.query.filter_by(curso_id=curso_id).all()
+            # Verificar que la materia pertenece a ese curso
+            mc = MateriaCurso.query.filter_by(
+                materia_id=materia_id,
+                curso_id=curso_id
+            ).first()
 
-        estudiantes = [ins.estudiante for ins in inscripciones]
+            if not mc:
+                ns.abort(404, 'La materia no pertenece a ese curso')
 
-        return estudiantes_schema.dump(estudiantes), 200
+            # Buscar inscripciones al curso del año especificado
+            inscripciones = Inscripcion.query.filter(
+                Inscripcion.curso_id == curso_id,
+                func.extract('year', Inscripcion.fecha) == year
+            ).all()
+
+            # Extraer estudiantes únicos de las inscripciones
+            estudiantes = list({ins.estudiante.ci: ins.estudiante for ins in inscripciones}.values())
+
+            return estudiantes_schema.dump(estudiantes), 200
+
+        except Exception as e:
+            ns.abort(500, f'Error interno del servidor: {str(e)}')
 
 
 

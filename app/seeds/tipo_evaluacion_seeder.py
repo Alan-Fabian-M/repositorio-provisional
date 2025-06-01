@@ -7,8 +7,11 @@ from ..models.MateriaCurso_Model import MateriaCurso
 from ..models.Estudiante_Model import Estudiante
 from ..models.Inscripcion_Model import Inscripcion
 from ..models.Gestion_Model import Gestion
+from ..models.Docente_Model import Docente
+from ..models.DocenteMateria_Model import DocenteMateria
 from datetime import date
 import random
+from werkzeug.security import generate_password_hash
 
 def seed_evaluacion_integral():
     # Check if table is empty
@@ -656,3 +659,485 @@ def crear_gestion_con_notas(anio, periodo):
         db.session.rollback()
         print(f"  ✗ Error al crear gestión {anio}: {str(e)}")
         return False
+
+def seed_docentes():
+    """
+    Crea docentes suficientes para una escuela secundaria.
+    Incluye docentes especializados por materia y algunos que pueden enseñar múltiples materias.
+    """
+    # Check if table is empty
+    if Docente.query.count() == 0:
+        docentes = []
+        
+        # Lista de nombres y apellidos para docentes
+        nombres_masculinos = [
+            "Carlos", "Miguel", "José", "Luis", "David", "Juan", "Roberto", "Fernando",
+            "Alejandro", "Ricardo", "Francisco", "Antonio", "Rafael", "Eduardo", "Sergio",
+            "Javier", "Manuel", "Pedro", "Sebastián", "Gabriel", "Nicolás", "Mateo",
+            "Santiago", "Daniel", "Emilio", "Gonzalo", "Rodrigo", "Héctor", "Pablo", "Álvaro"
+        ]
+        
+        nombres_femeninos = [
+            "María", "Ana", "Carmen", "Rosa", "Elena", "Isabel", "Patricia", "Laura",
+            "Andrea", "Mónica", "Claudia", "Sandra", "Beatriz", "Cristina", "Alejandra",
+            "Verónica", "Natalia", "Gabriela", "Paola", "Fernanda", "Valeria", "Carolina",
+            "Daniela", "Sofía", "Camila", "Lucía", "Valentina", "Isabella", "Martina", "Victoria"
+        ]
+        
+        apellidos = [
+            "García", "López", "Martínez", "González", "Rodríguez", "Fernández", "Sánchez",
+            "Pérez", "Gómez", "Martín", "Jiménez", "Ruiz", "Hernández", "Díaz", "Moreno",
+            "Muñoz", "Álvarez", "Romero", "Alonso", "Gutiérrez", "Navarro", "Torres",
+            "Domínguez", "Vázquez", "Ramos", "Gil", "Ramírez", "Serrano", "Blanco", "Suárez"
+        ]
+        
+        # Especialidades de docentes por materias (basado en las materias del sistema)
+        especialidades_docentes = [
+            {
+                "materias": ["Matemática", "Física"],
+                "nombre": "Ciencias Exactas",
+                "cantidad": 8
+            },
+            {
+                "materias": ["Lenguaje", "Literatura", "Comunicación"],
+                "nombre": "Lengua y Literatura",
+                "cantidad": 6
+            },
+            {
+                "materias": ["Historia", "Geografía", "Estudios Sociales"],
+                "nombre": "Ciencias Sociales",
+                "cantidad": 6
+            },
+            {
+                "materias": ["Química", "Biología", "Ciencias Naturales"],
+                "nombre": "Ciencias Naturales",
+                "cantidad": 6
+            },
+            {
+                "materias": ["Inglés", "Idiomas"],
+                "nombre": "Idiomas",
+                "cantidad": 4
+            },
+            {
+                "materias": ["Educación Física", "Deportes"],
+                "nombre": "Educación Física",
+                "cantidad": 4
+            },
+            {
+                "materias": ["Arte", "Música", "Dibujo"],
+                "nombre": "Artes",
+                "cantidad": 3
+            },
+            {
+                "materias": ["Tecnología", "Informática", "Computación"],
+                "nombre": "Tecnología",
+                "cantidad": 3
+            },
+            {
+                "materias": ["Filosofía", "Ética", "Religión"],
+                "nombre": "Humanidades",
+                "cantidad": 3
+            },
+            {
+                "materias": ["Economía", "Contabilidad"],
+                "nombre": "Ciencias Económicas",
+                "cantidad": 2
+            }
+        ]
+        
+        ci_counter = 5000000  # Empezar con CIs desde 5,000,000 para docentes
+        docente_id = 1
+        
+        print("Creando docentes por especialidad:")
+        
+        for especialidad in especialidades_docentes:
+            cantidad = especialidad["cantidad"]
+            nombre_especialidad = especialidad["nombre"]
+            
+            print(f"  - {nombre_especialidad}: {cantidad} docentes")
+            
+            for i in range(cantidad):
+                # Alternar entre masculino y femenino
+                es_masculino = (i % 2 == 0)
+                
+                if es_masculino:
+                    nombre = random.choice(nombres_masculinos)
+                else:
+                    nombre = random.choice(nombres_femeninos)
+                
+                apellido1 = random.choice(apellidos)
+                apellido2 = random.choice(apellidos)
+                nombre_completo = f"{nombre} {apellido1} {apellido2}"
+                
+                # Crear email basado en el nombre (sin espacios ni caracteres especiales)
+                nombre_email = nombre.lower().replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u")
+                apellido_email = apellido1.lower().replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u")
+                gmail = f"{nombre_email}.{apellido_email}@gmail.com"
+                
+                # Contraseña por defecto codificada
+                contrasena_hash = generate_password_hash("docente123")
+                
+                docente = Docente(
+                    ci=ci_counter,
+                    nombreCompleto=nombre_completo,
+                    gmail=gmail,
+                    contrasena=contrasena_hash,
+                    esDocente=True
+                )
+                
+                docentes.append(docente)
+                ci_counter += 1
+                docente_id += 1
+        
+        # Agregar algunos docentes adicionales como directivos/administrativos
+        directivos = [
+            {
+                "nombre": "Director General",
+                "nombre_completo": "Alberto Vargas Mendoza",
+                "gmail": "alberto.vargas@gmail.com"
+            },
+            {
+                "nombre": "Subdirectora Académica",
+                "nombre_completo": "Gloria Herrera Cruz",
+                "gmail": "gloria.herrera@gmail.com"
+            },
+            {
+                "nombre": "Coordinador Pedagógico",
+                "nombre_completo": "Fernando Flores Espinoza",
+                "gmail": "fernando.flores@gmail.com"
+            },
+            {
+                "nombre": "Secretaria Académica",
+                "nombre_completo": "Carmen Rivera Aguilar",
+                "gmail": "carmen.rivera@gmail.com"
+            }
+        ]
+        
+        print("  - Directivos y Administrativos: 4 personas")
+        
+        for directivo_info in directivos:
+            contrasena_hash = generate_password_hash("admin123")
+            
+            directivo = Docente(
+                ci=ci_counter,
+                nombreCompleto=directivo_info["nombre_completo"],
+                gmail=directivo_info["gmail"],
+                contrasena=contrasena_hash,
+                esDocente=True
+            )
+            
+            docentes.append(directivo)
+            ci_counter += 1
+        
+        try:
+            for docente in docentes:
+                db.session.add(docente)
+            db.session.commit()
+            
+            print(f"\n✓ Docentes creados exitosamente: {len(docentes)} docentes")
+            print("\nDistribución de docentes:")
+            
+            total_por_especialidad = sum(esp["cantidad"] for esp in especialidades_docentes)
+            print(f"  - Docentes por especialidad: {total_por_especialidad}")
+            print(f"  - Directivos y administrativos: 4")
+            print(f"  - Total: {len(docentes)} docentes")
+            
+            print("\nCredenciales por defecto:")
+            print("  - Docentes de especialidad: contraseña 'docente123'")
+            print("  - Directivos/administrativos: contraseña 'admin123'")
+            print("  - Todos los emails siguen el formato: nombre.apellido@gmail.com")
+            
+        except Exception as e:
+            db.session.rollback()
+            print(f"✗ Error al crear docentes: {str(e)}")
+
+def seed_docente_materia():
+    """
+    Asigna docentes a materias según sus especialidades.
+    Cada docente será asignado a materias que corresponden con su área de expertise.
+    """
+    # Check if table is empty
+    if DocenteMateria.query.count() == 0:
+        docente_materias = []
+        id_counter = 1
+        
+        # Obtener todos los docentes y materias
+        docentes = Docente.query.order_by(Docente.ci).all()
+        materias = Materia.query.order_by(Materia.id).all()
+        
+        if not docentes or not materias:
+            print("No hay docentes o materias para asignar")
+            return
+        
+        print(f"Asignando {len(docentes)} docentes a {len(materias)} materias...")
+        
+        # Mapeo de especialidades a nombres de materias
+        especialidades_materias = {
+            # Ciencias Exactas (8 docentes)
+            "matematicas": ["Matemáticas"],
+            "fisica": ["Física"],
+            
+            # Lengua y Literatura (6 docentes)
+            "lenguaje": ["Lenguaje"],
+            
+            # Ciencias Sociales (6 docentes)
+            "sociales": ["Ciencias Sociales"],
+            
+            # Ciencias Naturales (6 docentes)
+            "quimica": ["Química"],
+            "naturales": ["Ciencias Naturales"],
+            
+            # Idiomas (4 docentes)
+            "ingles": ["Inglés"],
+            
+            # Educación Física (4 docentes)
+            "educacion_fisica": ["Educación Física"],
+            
+            # Artes (3 docentes)
+            "artes": ["Artes Plásticas"],
+            "musica": ["Música"],
+            
+            # Tecnología (3 docentes)
+            "tecnologia": ["Tecnología", "Informática"],
+            
+            # Humanidades (3 docentes)
+            "religion": ["Religión"],
+            "filosofia": ["Filosofía"],
+            
+            # Ciencias Económicas (2 docentes)
+            "economia": ["Economía", "Contabilidad"]
+        }
+        
+        # Agrupar materias por tipo (sin considerar el curso específico)
+        materias_por_tipo = {}
+        for materia in materias:
+            # Extraer el nombre base de la materia (antes del número y letra del curso)
+            nombre_base = materia.nombre
+            for especialidad in ["Matemáticas", "Ciencias Sociales", "Ciencias Naturales", "Inglés", 
+                               "Educación Física", "Artes Plásticas", "Religión", "Música", 
+                               "Química", "Física", "Lenguaje"]:
+                if especialidad in nombre_base:
+                    if especialidad not in materias_por_tipo:
+                        materias_por_tipo[especialidad] = []
+                    materias_por_tipo[especialidad].append(materia)
+                    break
+        
+        print(f"Materias agrupadas por tipo:")
+        for tipo, lista_materias in materias_por_tipo.items():
+            print(f"  - {tipo}: {len(lista_materias)} materias")
+        
+        # Asignar docentes por especialidad
+        docente_index = 0
+        fecha_asignacion = date(2025, 2, 1)  # Fecha de inicio del año escolar 2025
+        
+        # Matemáticas (8 docentes)
+        if "Matemáticas" in materias_por_tipo:
+            materias_matematicas = materias_por_tipo["Matemáticas"]
+            print(f"\nAsignando docentes de Matemáticas...")
+            
+            # Distribuir las 12 materias de matemáticas entre 8 docentes
+            # Algunos docentes tendrán 1 materia, otros 2
+            materias_por_docente = len(materias_matematicas) // 8
+            materias_extra = len(materias_matematicas) % 8
+            
+            materia_index = 0
+            for i in range(8):
+                if docente_index >= len(docentes):
+                    break
+                    
+                docente = docentes[docente_index]
+                
+                # Calcular cuántas materias asignar a este docente
+                num_materias = materias_por_docente
+                if i < materias_extra:
+                    num_materias += 1
+                
+                # Asignar materias a este docente
+                for j in range(num_materias):
+                    if materia_index < len(materias_matematicas):
+                        materia = materias_matematicas[materia_index]
+                        
+                        docente_materia = DocenteMateria(
+                            id=id_counter,
+                            fecha=fecha_asignacion,
+                            docente_ci=docente.ci,
+                            materia_id=materia.id
+                        )
+                        docente_materias.append(docente_materia)
+                        id_counter += 1
+                        materia_index += 1
+                
+                print(f"  - {docente.nombreCompleto} asignado a {num_materias} materias de Matemáticas")
+                docente_index += 1
+        
+        # Lenguaje (6 docentes)
+        if "Lenguaje" in materias_por_tipo:
+            materias_lenguaje = materias_por_tipo["Lenguaje"]
+            print(f"\nAsignando docentes de Lenguaje...")
+            
+            # Distribuir las 12 materias de lenguaje entre 6 docentes (2 materias por docente)
+            materias_por_docente = 2
+            
+            materia_index = 0
+            for i in range(6):
+                if docente_index >= len(docentes) or materia_index >= len(materias_lenguaje):
+                    break
+                    
+                docente = docentes[docente_index]
+                
+                # Asignar 2 materias a este docente
+                for j in range(materias_por_docente):
+                    if materia_index < len(materias_lenguaje):
+                        materia = materias_lenguaje[materia_index]
+                        
+                        docente_materia = DocenteMateria(
+                            id=id_counter,
+                            fecha=fecha_asignacion,
+                            docente_ci=docente.ci,
+                            materia_id=materia.id
+                        )
+                        docente_materias.append(docente_materia)
+                        id_counter += 1
+                        materia_index += 1
+                
+                print(f"  - {docente.nombreCompleto} asignado a {materias_por_docente} materias de Lenguaje")
+                docente_index += 1
+        
+        # Ciencias Sociales (6 docentes)
+        if "Ciencias Sociales" in materias_por_tipo:
+            materias_sociales = materias_por_tipo["Ciencias Sociales"]
+            print(f"\nAsignando docentes de Ciencias Sociales...")
+            
+            # Distribuir las 12 materias entre 6 docentes (2 materias por docente)
+            materias_por_docente = 2
+            
+            materia_index = 0
+            for i in range(6):
+                if docente_index >= len(docentes) or materia_index >= len(materias_sociales):
+                    break
+                    
+                docente = docentes[docente_index]
+                
+                for j in range(materias_por_docente):
+                    if materia_index < len(materias_sociales):
+                        materia = materias_sociales[materia_index]
+                        
+                        docente_materia = DocenteMateria(
+                            id=id_counter,
+                            fecha=fecha_asignacion,
+                            docente_ci=docente.ci,
+                            materia_id=materia.id
+                        )
+                        docente_materias.append(docente_materia)
+                        id_counter += 1
+                        materia_index += 1
+                
+                print(f"  - {docente.nombreCompleto} asignado a {materias_por_docente} materias de Ciencias Sociales")
+                docente_index += 1
+        
+        # Continuar con las demás materias siguiendo el mismo patrón
+        materias_restantes = [
+            ("Ciencias Naturales", 6, "Ciencias Naturales"),
+            ("Química", 6, "Química"),
+            ("Física", 0, "Física"),  # Ya asignados con Matemáticas
+            ("Inglés", 4, "Inglés"),
+            ("Educación Física", 4, "Educación Física"),
+            ("Artes Plásticas", 3, "Artes Plásticas"),
+            ("Música", 3, "Música"),
+            ("Religión", 3, "Religión")
+        ]
+        
+        for nombre_materia, num_docentes, tipo_materia in materias_restantes:
+            if num_docentes == 0:  # Saltar materias ya asignadas
+                continue
+                
+            if nombre_materia in materias_por_tipo:
+                materias_tipo = materias_por_tipo[nombre_materia]
+                print(f"\nAsignando docentes de {tipo_materia}...")
+                
+                if len(materias_tipo) > 0 and num_docentes > 0:
+                    materias_por_docente = len(materias_tipo) // num_docentes
+                    materias_extra = len(materias_tipo) % num_docentes
+                    
+                    materia_index = 0
+                    for i in range(num_docentes):
+                        if docente_index >= len(docentes):
+                            break
+                            
+                        docente = docentes[docente_index]
+                        
+                        # Calcular cuántas materias asignar
+                        num_materias_asignar = materias_por_docente
+                        if i < materias_extra:
+                            num_materias_asignar += 1
+                        
+                        # Asignar materias
+                        for j in range(num_materias_asignar):
+                            if materia_index < len(materias_tipo):
+                                materia = materias_tipo[materia_index]
+                                
+                                docente_materia = DocenteMateria(
+                                    id=id_counter,
+                                    fecha=fecha_asignacion,
+                                    docente_ci=docente.ci,
+                                    materia_id=materia.id
+                                )
+                                docente_materias.append(docente_materia)
+                                id_counter += 1
+                                materia_index += 1
+                        
+                        if num_materias_asignar > 0:
+                            print(f"  - {docente.nombreCompleto} asignado a {num_materias_asignar} materias de {tipo_materia}")
+                        docente_index += 1
+        
+        # Asignar docentes directivos/administrativos a materias restantes si las hay
+        materias_sin_asignar = []
+        for tipo_materia, lista_materias in materias_por_tipo.items():
+            for materia in lista_materias:
+                # Verificar si esta materia ya fue asignada
+                ya_asignada = any(dm.materia_id == materia.id for dm in docente_materias)
+                if not ya_asignada:
+                    materias_sin_asignar.append(materia)
+        
+        if materias_sin_asignar and docente_index < len(docentes):
+            print(f"\nAsignando {len(materias_sin_asignar)} materias restantes a directivos...")
+            for materia in materias_sin_asignar:
+                if docente_index >= len(docentes):
+                    break
+                    
+                docente = docentes[docente_index % len(docentes)]  # Rotar entre docentes restantes
+                
+                docente_materia = DocenteMateria(
+                    id=id_counter,
+                    fecha=fecha_asignacion,
+                    docente_ci=docente.ci,
+                    materia_id=materia.id
+                )
+                docente_materias.append(docente_materia)
+                id_counter += 1
+                
+                if docente_index < len(docentes) - 4:  # No incrementar si es directivo
+                    docente_index += 1
+        
+        # Guardar todas las asignaciones
+        try:
+            for docente_materia in docente_materias:
+                db.session.add(docente_materia)
+            db.session.commit()
+            
+            print(f"\n✓ Asignaciones DocenteMateria creadas exitosamente: {len(docente_materias)} asignaciones")
+            
+            # Mostrar estadísticas
+            print(f"\nEstadísticas de asignación:")
+            print(f"  - Total asignaciones: {len(docente_materias)}")
+            print(f"  - Docentes con asignaciones: {len(set(dm.docente_ci for dm in docente_materias))}")
+            print(f"  - Materias asignadas: {len(set(dm.materia_id for dm in docente_materias))}")
+            
+            # Verificar cobertura
+            total_materias = len(materias)
+            materias_cubiertas = len(set(dm.materia_id for dm in docente_materias))
+            print(f"  - Cobertura: {materias_cubiertas}/{total_materias} materias ({(materias_cubiertas/total_materias)*100:.1f}%)")
+            
+        except Exception as e:
+            db.session.rollback()
+            print(f"✗ Error al crear asignaciones DocenteMateria: {str(e)}")
