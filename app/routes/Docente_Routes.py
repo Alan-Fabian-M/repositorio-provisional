@@ -6,6 +6,8 @@ from ..models.Curso_Model import Curso
 from ..models.Estudiante_Model import Estudiante
 from ..models.Evaluacion_Model import Evaluacion
 from ..models.Gestion_Model import Gestion
+from ..models.NotaFinal_Model import NotaFinal
+from ..models.Inscripcion_Model import Inscripcion
 from ..schemas.Docente_schema import  DocenteSchema
 from ..schemas.Materia_schema import MateriaSchema
 from flask import request 
@@ -479,6 +481,489 @@ class EvaluacionesContadas(Resource):
                     'total_gestiones_con_evaluaciones': len(conteos_por_gestion)
                 },
                 'mensaje': f'Conteo de evaluaciones realizado: {total_evaluaciones} evaluaciones encontradas'
+            }, 200
+            
+        except Exception as e:
+            ns.abort(500, f'Error interno del servidor: {str(e)}')
+
+
+# ========== ENDPOINTS PARA DASHBOARD DEL DOCENTE ==========
+
+@ns.route('/dashboard/docente/<int:ci>/estudiantes-por-curso')
+@ns.param('ci', 'CI del docente')
+class EstudiantesPorCurso(Resource):
+    @jwt_required()
+    @ns.doc(params={
+        'year': 'Año de inscripción (opcional, año actual por defecto)'
+    })
+    def get(self, ci):
+        """Total de estudiantes por curso asignado al docente filtrado por año de inscripción"""
+        try:
+            # Verificar que el docente existe
+            docente = Docente.query.get_or_404(ci)
+
+            # Obtener parámetro de año (defaultea al año actual)
+            from datetime import datetime
+            year = request.args.get('year', default=datetime.now().year, type=int)
+
+            # Obtener las materias asignadas al docente
+            docente_materias = DocenteMateria.query.filter_by(docente_ci=ci).all()
+
+            if not docente_materias:
+                return {
+                    'mensaje': 'El docente no tiene materias asignadas',
+                    'docente': {
+                        'ci': docente.ci,
+                        'nombre_completo': docente.nombreCompleto
+                    },
+                    'year_filtrado': year,
+                    'cursos': [],
+                    'total_estudiantes': 0
+                }, 200
+
+            # Obtener cursos y contar estudiantes filtrado por año de inscripción
+            cursos_estudiantes = {}
+            total_estudiantes_general = 0
+
+            for dm in docente_materias:
+                # Obtener materias-cursos donde esté asignada esta materia
+                materias_curso = MateriaCurso.query.filter_by(materia_id=dm.materia_id).all()
+
+                for mc in materias_curso:
+                    curso = mc.curso
+                    if not curso:
+                        continue
+
+                    # Contar estudiantes inscritos en este curso FILTRADO POR AÑO
+                    from ..models.Inscripcion_Model import Inscripcion
+                    total_estudiantes_curso = Inscripcion.query.filter(
+                        Inscripcion.curso_id == curso.id,
+                        db.extract('year', Inscripcion.fecha) == year
+                    ).count()
+
+                    curso_key = f"{curso.id}_{curso.nombre}"
+                    
+                    if curso_key not in cursos_estudiantes:
+                        cursos_estudiantes[curso_key] = {
+                            'curso_info': {
+                                'id': curso.id,
+                                'nombre': curso.nombre,
+                                'paralelo': curso.Paralelo,
+                                'nivel': curso.Nivel
+                            },
+                            'total_estudiantes': total_estudiantes_curso,
+                            'materias_docente': []
+                        }
+
+                    # Agregar materia a la lista si no está ya
+                    materia_info = {
+                        'id': dm.materia.id,
+                        'nombre': dm.materia.nombre
+                    }
+
+                    if materia_info not in cursos_estudiantes[curso_key]['materias_docente']:
+                        cursos_estudiantes[curso_key]['materias_docente'].append(materia_info)
+
+            # Calcular total general (sin duplicados) filtrado por año
+            cursos_unicos = set()
+            for data in cursos_estudiantes.values():
+                cursos_unicos.add(data['curso_info']['id'])
+
+            total_estudiantes_general = sum(
+                Inscripcion.query.filter(
+                    Inscripcion.curso_id == curso_id,
+                    db.extract('year', Inscripcion.fecha) == year
+                ).count()
+                for curso_id in cursos_unicos
+            )
+
+            return {
+                'docente': {
+                    'ci': docente.ci,
+                    'nombre_completo': docente.nombreCompleto
+                },
+                'year_filtrado': year,
+                'cursos': list(cursos_estudiantes.values()),
+                'resumen': {
+                    'total_cursos': len(cursos_estudiantes),
+                    'total_estudiantes': total_estudiantes_general,
+                    'total_materias_asignadas': len(docente_materias)
+                },
+                'mensaje': f'Información de estudiantes por curso para el docente {docente.nombreCompleto} - Año {year}'
+            }, 200
+        except Exception as e:
+            ns.abort(500, f'Error interno del servidor: {str(e)}')
+
+
+@ns.route('/dashboard/docente/<int:ci>/asistencia-promedio')
+@ns.param('ci', 'CI del docente')
+class AsistenciaPromedio(Resource):
+    @jwt_required()
+    @ns.doc(params={
+        'gestion_id': 'ID de la gestión (opcional, última gestión por defecto)'
+    })
+    def get(self, ci):
+        """Promedio de asistencia diaria por materia/curso del docente"""
+        try:
+            # Verificar que el docente existe
+            docente = Docente.query.get_or_404(ci)
+            
+            # Obtener gestión
+            gestion_id = request.args.get('gestion_id', type=int)
+            if not gestion_id:
+                gestion = Gestion.query.order_by(Gestion.anio.desc(), Gestion.id.desc()).first()
+                if not gestion:
+                    return {
+                        'mensaje': 'No se encontraron gestiones registradas',
+                        'asistencia_promedio': {},
+                        'promedio_general': 0
+                    }, 200
+                gestion_id = gestion.id
+            else:
+                gestion = Gestion.query.get(gestion_id)
+                if not gestion:
+                    ns.abort(404, 'Gestión no encontrada')
+            
+            # Obtener las materias asignadas al docente
+            docente_materias = DocenteMateria.query.filter_by(docente_ci=ci).all()
+            
+            if not docente_materias:                return {
+                    'mensaje': 'El docente no tiene materias asignadas',
+                    'docente': {
+                        'ci': docente.ci,
+                        'nombre_completo': docente.nombreCompleto
+                    },
+                    'asistencia_promedio': {},
+                    'promedio_general': 0
+                }, 200
+            
+            asistencia_por_materia = {}
+            suma_promedios = 0
+            materias_con_datos = 0
+            
+            for dm in docente_materias:
+                materia = dm.materia
+                
+                # Obtener todas las evaluaciones de asistencia final (tipo 2) para esta materia y gestión
+                evaluaciones_asistencia = Evaluacion.query.filter_by(
+                    materia_id=materia.id,
+                    gestion_id=gestion_id,
+                    tipo_evaluacion_id=2  # Asistencia-Final
+                ).all()
+                
+                if evaluaciones_asistencia:
+                    # Calcular promedio de asistencia para esta materia
+                    suma_notas = sum(eval.nota for eval in evaluaciones_asistencia)
+                    promedio_materia = suma_notas / len(evaluaciones_asistencia)
+                    
+                    # Convertir a porcentaje (escala de 15 a 100%)
+                    porcentaje_asistencia = round((promedio_materia / 15) * 100, 2)
+                    
+                    asistencia_por_materia[f"materia_{materia.id}"] = {
+                        'materia_info': {
+                            'id': materia.id,
+                            'nombre': materia.nombre
+                        },
+                        'promedio_asistencia_nota': round(promedio_materia, 2),
+                        'porcentaje_asistencia': porcentaje_asistencia,
+                        'total_evaluaciones': len(evaluaciones_asistencia),
+                        'total_estudiantes_evaluados': len(set(eval.estudiante_ci for eval in evaluaciones_asistencia))
+                    }
+                    
+                    suma_promedios += porcentaje_asistencia
+                    materias_con_datos += 1
+            
+            # Calcular promedio general
+            promedio_general = round(suma_promedios / materias_con_datos, 2) if materias_con_datos > 0 else 0
+            return {
+                'docente': {
+                    'ci': docente.ci,
+                    'nombre_completo': docente.nombreCompleto
+                },
+                'gestion': {
+                    'id': gestion.id,
+                    'anio': gestion.anio,
+                    'periodo': gestion.periodo
+                },
+                'asistencia_por_materia': asistencia_por_materia,
+                'resumen': {
+                    'promedio_general_asistencia': promedio_general,
+                    'total_materias_con_datos': materias_con_datos,
+                    'total_materias_asignadas': len(docente_materias)
+                },
+                'mensaje': f'Promedio de asistencia calculado para {materias_con_datos} materias del docente'
+            }, 200
+            
+        except Exception as e:
+            ns.abort(500, f'Error interno del servidor: {str(e)}')
+
+
+@ns.route('/dashboard/docente/<int:ci>/notas-promedio')
+@ns.param('ci', 'CI del docente')
+class NotasPromedio(Resource):
+    @jwt_required()
+    @ns.doc(params={
+        'gestion_id': 'ID de la gestión (opcional, última gestión por defecto)'
+    })
+    def get(self, ci):
+        """Promedio de notas finales por materia del docente"""
+        try:
+            # Verificar que el docente existe
+            docente = Docente.query.get_or_404(ci)
+            
+            # Obtener gestión
+            gestion_id = request.args.get('gestion_id', type=int)
+            if not gestion_id:
+                gestion = Gestion.query.order_by(Gestion.anio.desc(), Gestion.id.desc()).first()
+                if not gestion:
+                    return {
+                        'mensaje': 'No se encontraron gestiones registradas',
+                        'notas_promedio': {},
+                        'promedio_general': 0
+                    }, 200
+                gestion_id = gestion.id
+            else:
+                gestion = Gestion.query.get(gestion_id)
+                if not gestion:
+                    ns.abort(404, 'Gestión no encontrada')
+            
+            # Obtener las materias asignadas al docente
+            docente_materias = DocenteMateria.query.filter_by(docente_ci=ci).all()
+            
+            if not docente_materias:                return {
+                    'mensaje': 'El docente no tiene materias asignadas',
+                    'docente': {
+                        'ci': docente.ci,
+                        'nombre_completo': docente.nombreCompleto
+                    },
+                    'notas_promedio': {},
+                    'promedio_general': 0
+                }, 200
+            
+            from ..models.NotaFinal_Model import NotaFinal
+            
+            notas_por_materia = {}
+            suma_promedios = 0
+            materias_con_datos = 0
+            
+            for dm in docente_materias:
+                materia = dm.materia
+                
+                # Obtener todas las notas finales para esta materia y gestión
+                notas_finales = NotaFinal.query.filter_by(
+                    materia_id=materia.id,
+                    gestion_id=gestion_id
+                ).all()
+                
+                if notas_finales:
+                    # Calcular promedio de notas para esta materia
+                    suma_notas = sum(nota.valor for nota in notas_finales)
+                    promedio_materia = suma_notas / len(notas_finales)
+                    
+                    # Categorizar el promedio
+                    if promedio_materia >= 61:
+                        categoria = "Excelente"
+                    elif promedio_materia >= 51:
+                        categoria = "Bueno"
+                    elif promedio_materia >= 36:
+                        categoria = "Regular"
+                    else:
+                        categoria = "Deficiente"
+                    
+                    notas_por_materia[f"materia_{materia.id}"] = {
+                        'materia_info': {
+                            'id': materia.id,
+                            'nombre': materia.nombre
+                        },
+                        'promedio_notas': round(promedio_materia, 2),
+                        'categoria': categoria,
+                        'total_estudiantes': len(notas_finales),
+                        'distribucion_notas': {
+                            'aprobados': len([n for n in notas_finales if n.valor >= 51]),
+                            'reprobados': len([n for n in notas_finales if n.valor < 51]),
+                            'nota_maxima': max(nota.valor for nota in notas_finales),
+                            'nota_minima': min(nota.valor for nota in notas_finales)
+                        }
+                    }
+                    
+                    suma_promedios += promedio_materia
+                    materias_con_datos += 1
+            
+            # Calcular promedio general
+            promedio_general = round(suma_promedios / materias_con_datos, 2) if materias_con_datos > 0 else 0
+            
+            # Categorizar promedio general
+            if promedio_general >= 61:
+                categoria_general = "Excelente"
+            elif promedio_general >= 51:
+                categoria_general = "Bueno"
+            elif promedio_general >= 36:
+                categoria_general = "Regular"
+            else:
+                categoria_general = "Deficiente"
+            return {
+                'docente': {
+                    'ci': docente.ci,
+                    'nombre_completo': docente.nombreCompleto
+                },
+                'gestion': {
+                    'id': gestion.id,
+                    'anio': gestion.anio,
+                    'periodo': gestion.periodo
+                },
+                'notas_por_materia': notas_por_materia,
+                'resumen': {
+                    'promedio_general': promedio_general,
+                    'categoria_general': categoria_general,
+                    'total_materias_con_datos': materias_con_datos,
+                    'total_materias_asignadas': len(docente_materias)
+                },
+                'mensaje': f'Promedio de notas calculado para {materias_con_datos} materias del docente'
+            }, 200
+            
+        except Exception as e:
+            ns.abort(500, f'Error interno del servidor: {str(e)}')
+
+
+@ns.route('/dashboard/docente/<string:ci>/mejores-peores-estudiantes')
+class MejoresPeoresEstudiantes(Resource):
+    @jwt_required()
+    @ns.doc(params={
+        'year': 'Año para filtrar (opcional, por defecto año actual)'
+    })
+    def get(self, ci):
+        """Obtener top 3 mejores y peores estudiantes por materia que enseña el docente"""
+        try:
+            # Verificar que el docente existe
+            docente = Docente.query.filter_by(ci=ci).first()
+            if not docente:
+                ns.abort(404, 'Docente no encontrado')
+            
+            # Obtener el año para filtrar
+            year = request.args.get('year', type=int)
+            if not year:
+                year = datetime.now().year            # Obtener todas las materias asignadas al docente 
+            docente_materias = DocenteMateria.query.filter_by(docente_ci=docente.ci).all()
+            
+            if not docente_materias:
+                return {
+                    'mensaje': 'El docente no tiene materias asignadas',
+                    'docente': {
+                        'ci': docente.ci,
+                        'nombre_completo': docente.nombreCompleto
+                    },
+                    'year': year,
+                    'materias_con_estudiantes': {}
+                }, 200
+            
+            # Obtener gestiones del año especificado
+            gestiones = Gestion.query.filter_by(anio=year).all()
+            
+            if not gestiones:
+                return {
+                    'mensaje': f'No se encontraron gestiones para el año {year}',
+                    'docente': {
+                        'ci': docente.ci,
+                        'nombre_completo': docente.nombreCompleto
+                    },
+                    'year': year,
+                    'materias_con_estudiantes': {}
+                }, 200            
+            materias_resultados = {}
+            gestion_ids = [g.id for g in gestiones]
+            
+            for docente_materia in docente_materias:
+                materia = Materia.query.get(docente_materia.materia_id)
+                if not materia:
+                    continue
+                
+                # Obtener notas finales de estudiantes para esta materia en las gestiones del año especificado
+                notas_estudiantes = db.session.query(
+                    NotaFinal,
+                    Estudiante
+                ).join(
+                    Estudiante,
+                    NotaFinal.estudiante_ci == Estudiante.ci
+                ).filter(
+                    NotaFinal.materia_id == materia.id,
+                    NotaFinal.gestion_id.in_(gestion_ids)
+                ).all()
+                
+                if not notas_estudiantes:
+                    materias_resultados[f"materia_{materia.id}"] = {
+                        'materia_info': {
+                            'id': materia.id,
+                            'nombre': materia.nombre
+                        },
+                        'mensaje': 'No hay notas registradas para esta materia',
+                        'mejores_estudiantes': [],
+                        'peores_estudiantes': [],
+                        'total_estudiantes': 0
+                    }
+                    continue
+                  # Crear lista de estudiantes con sus notas
+                estudiantes_notas = []
+                for nota_final, estudiante in notas_estudiantes:
+                    estudiante_data = {
+                        'estudiante_ci': estudiante.ci,
+                        'nombre_completo': estudiante.nombreCompleto,
+                        'nota_final': nota_final.valor,
+                        'estado': 'Aprobado' if nota_final.valor >= 51 else 'Reprobado'
+                    }
+                    estudiantes_notas.append(estudiante_data)
+                
+                # Ordenar por nota (mayor a menor)
+                estudiantes_ordenados = sorted(
+                    estudiantes_notas, 
+                    key=lambda x: x['nota_final'], 
+                    reverse=True
+                )
+                
+                # Top 3 mejores (los primeros 3)
+                mejores_3 = estudiantes_ordenados[:3]
+                
+                # Top 3 peores (los últimos 3, pero ordenados de peor a mejor)
+                peores_3 = estudiantes_ordenados[-3:]
+                peores_3.reverse()  # Para mostrar del peor al menos peor
+                
+                # Calcular estadísticas adicionales
+                notas_valores = [est['nota_final'] for est in estudiantes_notas]
+                promedio_materia = sum(notas_valores) / len(notas_valores)
+                nota_maxima = max(notas_valores)
+                nota_minima = min(notas_valores)
+                aprobados = len([n for n in notas_valores if n >= 51])
+                reprobados = len(notas_valores) - aprobados
+                
+                materias_resultados[f"materia_{materia.id}"] = {
+                    'materia_info': {
+                        'id': materia.id,
+                        'nombre': materia.nombre
+                    },
+                    'mejores_estudiantes': mejores_3,
+                    'peores_estudiantes': peores_3,
+                    'estadisticas': {
+                        'total_estudiantes': len(estudiantes_notas),
+                        'promedio_materia': round(promedio_materia, 2),
+                        'nota_maxima': nota_maxima,
+                        'nota_minima': nota_minima,
+                        'aprobados': aprobados,
+                        'reprobados': reprobados,
+                        'porcentaje_aprobacion': round((aprobados / len(notas_valores)) * 100, 2)
+                    }
+                }
+            
+            return {
+                'docente': {
+                    'ci': docente.ci,
+                    'nombre_completo': docente.nombreCompleto
+                },
+                'year': year,
+                'materias_con_estudiantes': materias_resultados,
+                'resumen': {
+                    'total_materias_evaluadas': len([m for m in materias_resultados.values() if m.get('estadisticas')]),
+                    'total_materias_asignadas': len(docente_materias)
+                },
+                'mensaje': f'Ranking de estudiantes obtenido para {len(materias_resultados)} materias del docente'
             }, 200
             
         except Exception as e:
