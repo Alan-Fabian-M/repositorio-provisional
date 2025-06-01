@@ -11,7 +11,7 @@ from ..schemas.Materia_schema import MateriaSchema
 from flask import request 
 from app import db
 from werkzeug.security import generate_password_hash
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import jwt_required, get_jwt_identity
 from flask_restx import Namespace, Resource
 from ..api_model.Docente import ns, docente_model_request, docente_model_response
 from ..api_model.Materia import materia_model_response
@@ -145,6 +145,28 @@ class DocenteMateriasEnCurso(Resource):
         return materias_schema.dump(materias)
 
 
+# ========== FUNCIÓN AUXILIAR PARA VERIFICACIÓN DE ADMINISTRADOR ==========
+
+def verificar_admin():
+    """
+    Verifica si el usuario actual es administrador (esDocente=False).
+    Lanza abort(403) si no es administrador.
+    """
+    # Obtener la identidad del JWT (gmail del usuario)
+    current_user_gmail = get_jwt_identity()
+    
+    # Buscar el usuario en la base de datos
+    usuario = Docente.query.filter_by(gmail=current_user_gmail).first()
+    
+    if not usuario:
+        ns.abort(401, 'Usuario no encontrado')
+    
+    # Verificar si es administrador (esDocente=False)
+    if usuario.esDocente:
+        ns.abort(403, 'Acceso denegado: Solo administradores pueden acceder a este endpoint')
+    
+    return usuario  # Retornar el usuario para uso posterior si es necesario
+
 # ========== ENDPOINTS PARA DASHBOARD DEL ADMINISTRADOR ==========
 
 @ns.route('/dashboard/admin/conteos-globales')
@@ -152,6 +174,9 @@ class ConteoGlobalPorRol(Resource):
     @jwt_required()
     def get(self):
         """Conteo global por rol - Total de docentes/estudiantes"""
+        # Verificar que el usuario sea administrador
+        verificar_admin()
+        
         try:
             # Contar total de docentes
             total_docentes = Docente.query.count()
@@ -178,6 +203,9 @@ class AsistenciaGlobal(Resource):
     })
     def get(self):
         """Asistencia de todos los estudiantes por gestión - Porcentaje de asistencia general"""
+        # Verificar que el usuario sea administrador
+        verificar_admin()
+        
         try:
             gestion_id = request.args.get('gestion_id', type=int)
             
@@ -301,6 +329,9 @@ class EvaluacionesContadas(Resource):
     })
     def get(self):
         """Conteo de evaluaciones realizadas por gestión/año/período"""
+        # Verificar que el usuario sea administrador
+        verificar_admin()
+        
         try:
             gestion_id = request.args.get('gestion_id', type=int)
             anio = request.args.get('anio', type=int)
