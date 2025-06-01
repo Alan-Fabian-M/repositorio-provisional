@@ -284,7 +284,7 @@ class PasarNotasDeEvaluacionANotaFinal(Resource):
 @ns.route('/asistencia/')
 class AsistenciaPost(Resource):
     @ns.expect(evaluacion_model_request)
-    @ns.marshal_with(evaluacion_model_response, code=201)
+    # @ns.marshal_with(evaluacion_model_response, code=201)
     @jwt_required()
     def post(self):
         """Crea una nueva evaluación de asistencia diaria, actualiza asistencia final y recalcula nota final"""
