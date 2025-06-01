@@ -9,26 +9,22 @@ def seed_evaluacion_integral():
             EvaluacionIntegral(
                 id=1,
                 nombre="ser",
-                descripcion="Dimensión del ser",
-                puntaje=15
+                maxPuntos=15
             ),
             EvaluacionIntegral(
                 id=2,
                 nombre="decidir",
-                descripcion="Dimensión del decidir",
-                puntaje=15
+                maxPuntos=15
             ),
             EvaluacionIntegral(
                 id=3,
                 nombre="saber",
-                descripcion="Dimensión del saber",
-                puntaje=35
+                maxPuntos=35
             ),
             EvaluacionIntegral(
                 id=4,
                 nombre="hacer",
-                descripcion="Dimensión del hacer",
-                puntaje=35
+                maxPuntos=35
             )
         ]
         
@@ -48,12 +44,12 @@ def seed_tipo_evaluacion():
             TipoEvaluacion(
                 id=1,
                 nombre="Asistencia-Diaria",
-                descripcion="Registro de asistencia diaria"
+                evaluacion_integral_id=1
             ),
             TipoEvaluacion(
                 id=2,
                 nombre="Asistencia-Final",
-                descripcion="Promedio final de asistencia"
+                evaluacion_integral_id=1
             )
         ]
         

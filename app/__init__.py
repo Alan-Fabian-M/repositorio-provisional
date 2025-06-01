@@ -11,9 +11,7 @@ def create_app():
     app.config["JWT_HEADER_TYPE"] = ""
 
     # Debug: Verificar configuración cargada
-    print("DB URI:", app.config.get('SQLALCHEMY_DATABASE_URI'))
-
-    # Inicializar extensiones
+    print("DB URI:", app.config.get('SQLALCHEMY_DATABASE_URI'))    # Inicializar extensiones
     db.init_app(app)
     jwt.init_app(app)
     ma.init_app(app)
@@ -26,13 +24,24 @@ def create_app():
         db.create_all()
         
         # Verificar si las tablas específicas están vacías
-        from .models.TipoEvaluacion_Model import TipoEvaluacion
-        from .models.EvaluacionIntegral_Model import EvaluacionIntegral
-        
-        if TipoEvaluacion.query.count() == 0 and EvaluacionIntegral.query.count() == 0:
-            # Solo ejecutar los seeders si ambas tablas están vacías
-            from .seeds import run_seeders
-            run_seeders()
+        try:
+            from .models.TipoEvaluacion_Model import TipoEvaluacion
+            from .models.EvaluacionIntegral_Model import EvaluacionIntegral
+            
+            if TipoEvaluacion.query.count() == 0 and EvaluacionIntegral.query.count() == 0:
+                # Solo ejecutar los seeders si ambas tablas están vacías
+                from .seeds import run_seeders
+                run_seeders()
+            else:
+                print("Las tablas ya contienen datos, no se requiere inicialización.")
+        except Exception as e:
+            print(f"Error al verificar las tablas: {e}")
+            # Si hay error, intentar ejecutar los seeders
+            try:
+                from .seeds import run_seeders
+                run_seeders()
+            except Exception as seeder_error:
+                print(f"Error al ejecutar seeders: {seeder_error}")
     
     # Elimina cualquier configuración previa  # Acceso directo a la configuración interna
 
