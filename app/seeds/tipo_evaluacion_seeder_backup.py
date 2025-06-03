@@ -519,111 +519,44 @@ def seed_inscripciones_historicas():
                     
             except Exception as e:
                 print(f"✗ Error en {trimestre['periodo']}: {str(e)}")
-                continue          # PROCESO PARA GESTIÓN 2025 (SIMPLE) - ESTUDIANTES SUBEN DE GRADO
+                continue        
+        # PROCESO PARA GESTIÓN 2025 (SIMPLE)
         print("\n" + "=" * 60)
         print("INICIANDO PROCESO PARA GESTIÓN 2025 (GESTIÓN SIMPLE)")
-        print("ESTUDIANTES DE 2024 SUBEN UN GRADO - NUEVOS ESTUDIANTES LLENAN 1°")
         print("=" * 60)
         
-        # 3. Crear inscripciones para 2025 con progresión de grado
-        print("Paso 3: Creando inscripciones para gestión 2025 con progresión académica...")
+        # 3. Crear inscripciones para 2025 (siguientes 300 estudiantes)
+        print("Paso 3: Creando inscripciones para gestión 2025...")
         fecha_inscripcion_2025 = date(2025, 2, 1)  # 1 de febrero de 2025
         
-        # 3A. PRIMERO: Los estudiantes de 2024 suben de grado
-        print("  📈 Promoviendo estudiantes de 2024 al siguiente grado...")
-        estudiantes_promovidos = 0
+        curso_id = 1
+        estudiantes_en_curso_actual = 0
         
-        for i in range(300):  # Estudiantes 1-300 (los de 2024)
+        for i in range(300, 600):  # Estudiantes 301-600
             estudiante = estudiantes[i]
             
-            # Obtener la inscripción de 2024 para saber en qué curso estaba
-            inscripcion_2024 = next((insc for insc in inscripciones if insc.estudiante_ci == estudiante.ci), None)
-            if not inscripcion_2024:
-                continue
-                
-            curso_2024 = inscripcion_2024.curso_id
-              # Calcular el nuevo curso (subir un grado)
-            # 1A(1)→2A(3), 1B(2)→2B(4), 2A(3)→3A(5), 2B(4)→3B(6), etc.
-            # Los de 6° se gradúan (no se inscriben en 2025)
-            if curso_2024 in [11, 12]:  # 6A y 6B
-                print(f"    🎓 Estudiante {estudiante.ci} se graduó de 6° (curso {curso_info[curso_2024]})")
-                continue  # Los de 6° se gradúan y no se inscriben en 2025
-            else:
-                # Mapeo correcto: 1A→2A, 1B→2B, 2A→3A, 2B→3B, etc.
-                nuevo_curso = curso_2024 + 2
-                
-                if nuevo_curso > 12:  # Asegurar que no exceda 6B
-                    continue
-                
-                descripcion = f"Inscripción año escolar 2025 - Promovido a {curso_info[nuevo_curso]}"
-                
-                inscripcion = Inscripcion(
-                    id=id_counter,
-                    descripcion=descripcion,
-                    fecha=fecha_inscripcion_2025,
-                    estudiante_ci=estudiante.ci,
-                    curso_id=nuevo_curso
-                )
-                
-                inscripciones.append(inscripcion)
-                id_counter += 1
-                estudiantes_promovidos += 1
-        
-        print(f"    ✅ {estudiantes_promovidos} estudiantes promovidos al siguiente grado")
-          # 3B. SEGUNDO: Los estudiantes nuevos (301-600) llenan principalmente 1° y los espacios vacíos
-        print("  🆕 Inscribiendo estudiantes nuevos para llenar cursos...")
-        
-        # Contar cuántos estudiantes promovidos van a cada curso
-        estudiantes_por_curso_2025 = {i: 0 for i in range(1, 13)}
-        
-        # Contar promociones (solo las inscripciones nuevas de 2025)
-        for inscripcion in inscripciones[300:]:  # Solo las inscripciones de 2025
-            curso_id = inscripcion.curso_id
-            estudiantes_por_curso_2025[curso_id] += 1
-        
-        # Calcular espacios disponibles (máximo 25 por curso)
-        espacios_por_curso = {}
-        for curso_id in range(1, 13):
-            espacios_por_curso[curso_id] = max(0, 25 - estudiantes_por_curso_2025[curso_id])
-        
-        print(f"    📊 Espacios disponibles por curso: {espacios_por_curso}")
-        
-        # Priorizar llenar 1° con estudiantes nuevos, luego el resto
-        cursos_prioritarios = [1, 2]  # 1A y 1B primero
-        cursos_restantes = [i for i in range(3, 13) if espacios_por_curso[i] > 0]
-        orden_cursos = cursos_prioritarios + cursos_restantes
-        
-        estudiante_index = 300  # Empezar con estudiante 301
-        estudiantes_nuevos_inscritos = 0
-        
-        for curso_id in orden_cursos:
-            espacios_disponibles = espacios_por_curso[curso_id]
+            descripcion = f"Inscripción año escolar 2025 - Curso {curso_info[curso_id]}"
             
-            for _ in range(espacios_disponibles):
-                if estudiante_index >= 600:  # No hay más estudiantes
+            inscripcion = Inscripcion(
+                id=id_counter,
+                descripcion=descripcion,
+                fecha=fecha_inscripcion_2025,
+                estudiante_ci=estudiante.ci,
+                curso_id=curso_id
+            )
+            
+            inscripciones.append(inscripcion)
+            id_counter += 1
+            estudiantes_en_curso_actual += 1
+            
+            # Si ya tenemos 25 estudiantes en este curso, pasar al siguiente
+            if estudiantes_en_curso_actual == 25:
+                curso_id += 1
+                estudiantes_en_curso_actual = 0
+                
+                # Si ya asignamos todos los cursos, salir del bucle
+                if curso_id > 12:
                     break
-                    
-                estudiante = estudiantes[estudiante_index]
-                
-                descripcion = f"Inscripción año escolar 2025 - Curso {curso_info[curso_id]}"
-                
-                inscripcion = Inscripcion(
-                    id=id_counter,
-                    descripcion=descripcion,
-                    fecha=fecha_inscripcion_2025,
-                    estudiante_ci=estudiante.ci,
-                    curso_id=curso_id
-                )
-                
-                inscripciones.append(inscripcion)
-                id_counter += 1
-                estudiante_index += 1
-                estudiantes_nuevos_inscritos += 1
-            
-            if estudiante_index >= 600:
-                break
-        
-        print(f"    ✅ {estudiantes_nuevos_inscritos} estudiantes nuevos inscritos")
         
         # Guardar las inscripciones de 2025
         try:
@@ -839,6 +772,7 @@ def generar_evaluaciones_trimestre(gestion_id, fecha_inicio, fecha_fin, trimestr
                 for i in range(num_exposiciones):
                     fecha_exposicion = generar_fecha_aleatoria(fecha_inicio, fecha_fin)
                     nota_exposicion = generar_nota_realista("exposicion")
+                    
                     evaluacion = Evaluacion(
                         descripcion=f"Exposición {i+1} - {materia.nombre}",
                         fecha=fecha_exposicion,
@@ -846,8 +780,7 @@ def generar_evaluaciones_trimestre(gestion_id, fecha_inicio, fecha_fin, trimestr
                         tipo_evaluacion_id=tipo_exposicion.id,
                         estudiante_ci=estudiante.ci,
                         materia_id=materia.id,
-                        gestion_id=gestion_id
-                    )
+                        gestion_id=gestion_id                    )
                     db.session.add(evaluacion)
                     evaluaciones_creadas += 1
                 
@@ -859,7 +792,7 @@ def generar_evaluaciones_trimestre(gestion_id, fecha_inicio, fecha_fin, trimestr
         print(f"    ✅ Notas finales actualizadas automáticamente")
         
     except Exception as e:
-        db.session.rollback()
+        db.session.rollback()        
         print(f"    ❌ Error al generar evaluaciones: {str(e)}")
 
 
@@ -902,10 +835,10 @@ def generar_asistencias_diarias(gestion_id, fecha_inicio, fecha_fin):
                 continue
             
             materias_curso = MateriaCurso.query.filter_by(curso_id=inscripcion.curso.id).all()
+            
             for mc in materias_curso:
                 materia = mc.materia
-                
-                # Generar asistencias diarias (15-25 días por trimestre)
+                  # Generar asistencias diarias (15-25 días por trimestre)
                 num_asistencias = random.randint(15, 25)
                 
                 for i in range(num_asistencias):
@@ -927,8 +860,9 @@ def generar_asistencias_diarias(gestion_id, fecha_inicio, fecha_fin):
                 # Commit parcial para las asistencias diarias
                 db.session.commit()
                 
-                # Calcular asistencia final usando la función local
-                nota_asistencia_final = calcular_asistencia_final(estudiante.ci, gestion_id, materia.id)
+                # Calcular asistencia final usando la función del endpoint
+                resultado_asistencia = AsistenciaFinal(estudiante.ci, gestion_id, materia.id)
+                nota_asistencia_final = resultado_asistencia.get("asistenciaFinal", 0)
                 
                 # Crear evaluación de asistencia final
                 evaluacion_final = Evaluacion(
@@ -938,8 +872,7 @@ def generar_asistencias_diarias(gestion_id, fecha_inicio, fecha_fin):
                     tipo_evaluacion_id=tipo_asistencia_final.id,
                     estudiante_ci=estudiante.ci,
                     materia_id=materia.id,
-                    gestion_id=gestion_id
-                )
+                    gestion_id=gestion_id                )
                 db.session.add(evaluacion_final)
                 asistencias_finales_creadas += 1
                 
@@ -963,23 +896,18 @@ def generar_fecha_aleatoria(fecha_inicio, fecha_fin):
 
 
 def generar_nota_realista(tipo_evaluacion):
-    """
-    Genera notas realistas según el tipo de evaluación CON SISTEMA CORRECTO DE PUNTUACIÓN:
-    - Exámenes: máximo 35 puntos
-    - Tareas: máximo 35 puntos  
-    - Exposiciones: máximo 15 puntos
-    """
+    """Genera notas realistas según el tipo de evaluación"""
     if tipo_evaluacion == "examen":
-        # Exámenes: distribución más variada (14-35 puntos)
-        return round(random.uniform(14, 35), 1)
+        # Exámenes: distribución más variada (40-100)
+        return round(random.uniform(40, 100), 1)
     elif tipo_evaluacion == "tarea":
-        # Tareas: generalmente mejores notas (21-35 puntos)
-        return round(random.uniform(21, 35), 1)
+        # Tareas: generalmente mejores notas (60-100)
+        return round(random.uniform(60, 100), 1)
     elif tipo_evaluacion == "exposicion":
-        # Exposiciones: buenas notas pero algo variables (10.5-15 puntos)
-        return round(random.uniform(10.5, 15), 1)
+        # Exposiciones: buenas notas pero algo variables (70-100)
+        return round(random.uniform(70, 100), 1)
     else:
-        return round(random.uniform(17.5, 35), 1)
+        return round(random.uniform(50, 100), 1)
 
 
 def generar_nota_asistencia():
@@ -1003,7 +931,7 @@ def generar_nota_asistencia():
 def crear_gestion_con_notas(anio, periodo):
     """
     Crea una gestión simple para 2025 con estructura básica de notas.
-    Usa las inscripciones reales de 2025 (estudiantes promovidos + nuevos).
+    Solo para estudiantes de 2025 (estudiantes 301-600).
     """
     try:
         # Crear la gestión directamente en la base de datos
@@ -1013,23 +941,21 @@ def crear_gestion_con_notas(anio, periodo):
         
         print(f"  ✓ Gestión {anio} creada con ID: {nueva_gestion.id}")
         
-        # Obtener estudiantes inscritos en 2025 (buscar por fecha de inscripción)
-        fecha_2025 = date(2025, 2, 1)
-        inscripciones_2025 = Inscripcion.query.filter_by(fecha=fecha_2025).all()
-        
-        print(f"  📋 Encontradas {len(inscripciones_2025)} inscripciones para 2025")
-        
+        # Obtener estudiantes de 2025 (estudiantes 301-600)
+        estudiantes_2025 = Estudiante.query.order_by(Estudiante.ci).offset(300).limit(300).all()
         tipoEvaluacionId = TipoEvaluacion.query.filter_by(nombre='Asistencia-Final').first()
         
         notas_creadas = 0
         evaluaciones_creadas = 0
-        for inscripcion_2025 in inscripciones_2025:
-            est = inscripcion_2025.estudiante
-            if not est:
+        
+        for est in estudiantes_2025:
+            # Obtener la inscripción activa del estudiante
+            inscripcion = Inscripcion.query.filter_by(estudiante_ci=est.ci).order_by(Inscripcion.fecha.desc()).first()
+            if not inscripcion or not inscripcion.curso:
                 continue
 
             # Obtener materias asociadas al curso
-            materias_curso = MateriaCurso.query.filter_by(curso_id=inscripcion_2025.curso.id).all()
+            materias_curso = MateriaCurso.query.filter_by(curso_id=inscripcion.curso.id).all()
 
             for mc in materias_curso:
                 materia = mc.materia
@@ -1203,23 +1129,10 @@ def seed_docentes():
                     contrasena=contrasena_hash,
                     esDocente=True
                 )
+                
                 docentes.append(docente)
                 ci_counter += 1
                 docente_id += 1
-        
-        # Agregar ADMINISTRADOR PRINCIPAL del sistema
-        print("  - Administrador Principal: 1 administrador")
-        
-        administrador = Docente(
-            ci=ci_counter,
-            nombreCompleto="Admin",
-            gmail="admin@gmail.com",
-            contrasena=generate_password_hash("admin123"),
-            esDocente=False
-        )
-        
-        docentes.append(administrador)
-        ci_counter += 1
         
         # Agregar algunos docentes adicionales como directivos/administrativos
         directivos = [
@@ -1578,11 +1491,12 @@ def actualizar_nota_final_automatica(estudiante_ci, gestion_id, materia_id):
     Actualiza automáticamente la nota final del estudiante calculando las 4 dimensiones.
     Calcula directamente sin usar imports circulares.
     """
-    try:        # Función local para calcular nota por dimensión (copiada del endpoint)
+    try:
+        # Función local para calcular nota por dimensión (copiada del endpoint)
         def calcular_nota_dimension(dimension_nombre):
-            # Buscar la EvaluacionIntegral por nombre usando comparación exacta
+            # Buscar la EvaluacionIntegral por nombre
             evaluacion_integral = EvaluacionIntegral.query.filter(
-                EvaluacionIntegral.nombre == dimension_nombre
+                EvaluacionIntegral.nombre.ilike(dimension_nombre)
             ).first()
             
             if not evaluacion_integral:
@@ -1611,15 +1525,18 @@ def actualizar_nota_final_automatica(estudiante_ci, gestion_id, materia_id):
             # Calcular promedio
             suma = sum(eva.nota for eva in evaluaciones)
             promedio = suma / len(evaluaciones)
-            return promedio        # Calcular notas por dimensión
+            return promedio
+
+        # Calcular notas por dimensión
         ser_nota = calcular_nota_dimension("ser")
         hacer_nota = calcular_nota_dimension("hacer")
         saber_nota = calcular_nota_dimension("saber")
         decidir_nota = calcular_nota_dimension("decidir")
 
-        # Calcular nota final integral (suma directa, sin dividir)
-        # Cada dimensión ya tiene su peso correcto: ser=15, decidir=15, hacer=35, saber=35 = 100 total
-        nota_final_valor = round((ser_nota + hacer_nota + saber_nota + decidir_nota), 2)        # Buscar o crear NotaFinal
+        # Calcular promedio final
+        promedio = round((ser_nota + hacer_nota + saber_nota + decidir_nota) / 4, 2)
+
+        # Buscar o crear NotaFinal
         nota_final = NotaFinal.query.filter_by(
             estudiante_ci=estudiante_ci,
             gestion_id=gestion_id,
@@ -1631,13 +1548,13 @@ def actualizar_nota_final_automatica(estudiante_ci, gestion_id, materia_id):
                 estudiante_ci=estudiante_ci,
                 gestion_id=gestion_id,
                 materia_id=materia_id,
-                valor=nota_final_valor
+                valor=promedio
             )
             db.session.add(nota_final)
         else:
-            nota_final.valor = nota_final_valor
+            nota_final.valor = promedio
 
-        return nota_final_valor
+        return promedio
         
     except Exception as e:
         print(f"Error al actualizar nota final: {str(e)}")

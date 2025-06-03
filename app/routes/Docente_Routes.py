@@ -901,11 +901,13 @@ class MejoresPeoresEstudiantes(Resource):
                         'total_estudiantes': 0
                     }
                     continue
-                  # Crear lista de estudiantes con sus notas
+                
+                # Crear lista de estudiantes con sus notas
                 estudiantes_notas = []
                 for nota_final, estudiante in notas_estudiantes:
                     estudiante_data = {
-                        'estudiante_ci': estudiante.ci,
+                        'estudiante_id': estudiante.id,
+                        'ci': estudiante.ci,
                         'nombre_completo': estudiante.nombreCompleto,
                         'nota_final': nota_final.valor,
                         'estado': 'Aprobado' if nota_final.valor >= 51 else 'Reprobado'

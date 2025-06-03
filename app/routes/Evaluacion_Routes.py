@@ -26,9 +26,7 @@ class EvaluacionList(Resource):
     def get(self):
         """Lista todas las evaluaciones"""
         items = Evaluacion.query.all()
-        return evaluaciones_schema.dump(items)
-
-    @ns.expect(evaluacion_model_request)
+        return evaluaciones_schema.dump(items)    @ns.expect(evaluacion_model_request)
     @ns.marshal_with(evaluacion_model_response, code=201)
     @jwt_required()
     def post(self):
@@ -55,12 +53,14 @@ class EvaluacionList(Resource):
             def extraer_nota(valor):
                 return valor["Nota"] if isinstance(valor, dict) and "Nota" in valor else 0
 
-            promedio = round((
+            # Calcular nota final integral (suma directa, sin dividir)
+            # Cada dimensión ya tiene su peso correcto: ser=15, decidir=15, hacer=35, saber=35 = 100 total
+            nota_final_valor = round((
                 extraer_nota(ser_nota) +
                 extraer_nota(hacer_nota) +
                 extraer_nota(saber_nota) +
                 extraer_nota(decidir_nota)
-            ) / 4, 2)
+            ), 2)
 
             # Buscar o crear NotaFinal
             nota_final = NotaFinal.query.filter_by(
@@ -74,11 +74,11 @@ class EvaluacionList(Resource):
                     estudiante_ci=estudiante_ci,
                     gestion_id=gestion_id,
                     materia_id=materia_id,
-                    valor=promedio
+                    valor=nota_final_valor
                 )
                 db.session.add(nota_final)
             else:
-                nota_final.valor = promedio
+                nota_final.valor = nota_final_valor
 
             db.session.commit()
 
@@ -321,9 +321,7 @@ class AsistenciaPost(Resource):
                 tipoAsistenciaFinal.nota = nota_asistencia_final
                 db.session.add(tipoAsistenciaFinal)
 
-            db.session.commit()
-
-            # === Recalcular Nota Final del estudiante para esa materia y gestión ===
+            db.session.commit()            # === Recalcular Nota Final del estudiante para esa materia y gestión ===
             estudiante_ci = data["estudiante_ci"]
             gestion_id = data["gestion_id"]
             materia_id = data["materia_id"]
@@ -336,12 +334,14 @@ class AsistenciaPost(Resource):
             def extraer_nota(valor):
                 return valor["Nota"] if isinstance(valor, dict) and "Nota" in valor else 0
 
-            promedio = round((
+            # Calcular nota final integral (suma directa, sin dividir)
+            # Cada dimensión ya tiene su peso correcto: ser=15, decidir=15, hacer=35, saber=35 = 100 total
+            nota_final_valor = round((
                 extraer_nota(ser_nota) +
                 extraer_nota(hacer_nota) +
                 extraer_nota(saber_nota) +
                 extraer_nota(decidir_nota)
-            ) / 4, 2)
+            ), 2)
 
             # Buscar o crear NotaFinal
             nota_final = NotaFinal.query.filter_by(
@@ -355,11 +355,11 @@ class AsistenciaPost(Resource):
                     estudiante_ci=estudiante_ci,
                     gestion_id=gestion_id,
                     materia_id=materia_id,
-                    valor=promedio
+                    valor=nota_final_valor
                 )
                 db.session.add(nota_final)
             else:
-                nota_final.valor = promedio
+                nota_final.valor = nota_final_valor
 
             db.session.commit()
 
@@ -616,9 +616,7 @@ class BoletinPorMateria(Resource):
             ser = getSer(estudiante.ci, gestion_id, materia_id)
             hacer = getHacer(estudiante.ci, gestion_id, materia_id)
             saber = getSaber(estudiante.ci, gestion_id, materia_id)
-            decidir = getDecidir(estudiante.ci, gestion_id, materia_id)
-
-            # Si alguna nota vino como error (tupla), la manejamos
+            decidir = getDecidir(estudiante.ci, gestion_id, materia_id)            # Si alguna nota vino como error (tupla), la manejamos
             def nota_valida(valor):
                 if isinstance(valor, dict) and "Nota" in valor:
                     return valor["Nota"]
@@ -629,7 +627,9 @@ class BoletinPorMateria(Resource):
             saber_nota = nota_valida(saber)
             decidir_nota = nota_valida(decidir)
 
-            promedio = round((ser_nota + hacer_nota + saber_nota + decidir_nota) / 4, 2)
+            # Calcular nota final integral (suma directa, sin dividir)
+            # Cada dimensión ya tiene su peso correcto: ser=15, decidir=15, hacer=35, saber=35 = 100 total
+            nota_final_valor = round((ser_nota + hacer_nota + saber_nota + decidir_nota), 2)
 
             resultado.append({
                 "ci": estudiante.ci,
@@ -638,7 +638,7 @@ class BoletinPorMateria(Resource):
                 "hacer": hacer_nota,
                 "saber": saber_nota,
                 "decidir": decidir_nota,
-                "nota_final": promedio
+                "nota_final": nota_final_valor
             })
 
         return resultado, 200
