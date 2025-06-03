@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify
-from datetime import timedelta
 from .extensions import db, jwt, ma, api, mi, cors, cloudinary
 from .config import Config
 from . import models
@@ -10,9 +9,6 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
     app.config["JWT_HEADER_TYPE"] = ""
-    
-    # Configurar duración del token JWT a 1 día
-    app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(days=1)
 
     # Debug: Verificar configuración cargada
     print("DB URI:", app.config.get('SQLALCHEMY_DATABASE_URI'))    # Inicializar extensiones
