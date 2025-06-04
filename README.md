@@ -104,7 +104,7 @@ http://127.0.0.1:5000/
 ```
 
 Ahí encontrarás la documentación Swagger generada automáticamente por Flask-RESTx.
-<<<<<<< HEAD
+
 # Back
-=======
->>>>>>> 32e2f7c647de90a3d7c49d9f83fdd2d41483cec1
+
+
