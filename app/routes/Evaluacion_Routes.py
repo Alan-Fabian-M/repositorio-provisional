@@ -26,7 +26,9 @@ class EvaluacionList(Resource):
     def get(self):
         """Lista todas las evaluaciones"""
         items = Evaluacion.query.all()
-        return evaluaciones_schema.dump(items)    @ns.expect(evaluacion_model_request)
+        return evaluaciones_schema.dump(items)
+
+    @ns.expect(evaluacion_model_request)
     @ns.marshal_with(evaluacion_model_response, code=201)
     @jwt_required()
     def post(self):
@@ -580,14 +582,17 @@ class EvaluacionesPorEstudiante(Resource):
 
 
 @ns.route('/estudiante/<int:estudiante_ci>/NotaAsistenciaFinal')
-class EvaluacionesPorEstudiante(Resource):
+class NotaAsistenciaFinalPorEstudiante(Resource):
     @ns.marshal_list_with(evaluacion_model_response)
     @jwt_required()
     def get(self, estudiante_ci):
-        """Buscar evaluaciones por CI del estudiante"""
-        evaluaciones = Evaluacion.query.filter_by(estudiante_ci=estudiante_ci).all()
+        """Buscar evaluaciones de asistencia final por CI del estudiante"""
+        evaluaciones = Evaluacion.query.filter_by(
+            estudiante_ci=estudiante_ci,
+            tipo_evaluacion_id=2  # ID fijo para Asistencia-Final
+        ).all()
         if not evaluaciones:
-            ns.abort(404, f"No se encontraron evaluaciones para el estudiante con CI {estudiante_ci}")
+            ns.abort(404, f"No se encontraron evaluaciones de asistencia final para el estudiante con CI {estudiante_ci}")
         return evaluaciones_schema.dump(evaluaciones)
     
 
