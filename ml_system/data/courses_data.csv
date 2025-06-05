@@ -1,0 +1,13 @@
+curso_id,nombre,descripcion,paralelo,turno,nivel,total_inscripciones
+4,2,"Segundo año de educación secundaria, paralelo B, turno mañana",B,Mañana,Secundaria,50
+10,5,"Quinto año de educación secundaria, paralelo B, turno mañana",B,Mañana,Secundaria,50
+9,5,"Quinto año de educación secundaria, paralelo A, turno mañana",A,Mañana,Secundaria,50
+7,4,"Cuarto año de educación secundaria, paralelo A, turno mañana",A,Mañana,Secundaria,50
+6,3,"Tercer año de educación secundaria, paralelo B, turno mañana",B,Mañana,Secundaria,50
+12,6,"Sexto año de educación secundaria, paralelo B, turno mañana",B,Mañana,Secundaria,50
+3,2,"Segundo año de educación secundaria, paralelo A, turno mañana",A,Mañana,Secundaria,50
+1,1,"Primer año de educación secundaria, paralelo A, turno mañana",A,Mañana,Secundaria,50
+5,3,"Tercer año de educación secundaria, paralelo A, turno mañana",A,Mañana,Secundaria,50
+2,1,"Primer año de educación secundaria, paralelo B, turno mañana",B,Mañana,Secundaria,50
+11,6,"Sexto año de educación secundaria, paralelo A, turno mañana",A,Mañana,Secundaria,50
+8,4,"Cuarto año de educación secundaria, paralelo B, turno mañana",B,Mañana,Secundaria,50

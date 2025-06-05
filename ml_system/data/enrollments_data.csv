@@ -1,0 +1,601 @@
+inscripcion_id,estudiante_ci,curso_id,fecha,estado,estudiante_nombre,curso_nombre,curso_nivel,curso_paralelo,curso_turno,mes_inscripcion,año_inscripcion
+1,10000000,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Pablo Espinoza Navarro,1,Secundaria,A,Mañana,2,2024
+2,10000001,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Carolina Marín Herrera,1,Secundaria,A,Mañana,2,2024
+3,10000002,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Daniel Molina Ortiz,1,Secundaria,A,Mañana,2,2024
+4,10000003,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Gabriela García Ramos,1,Secundaria,A,Mañana,2,2024
+5,10000004,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Iván Ortega Muñoz,1,Secundaria,A,Mañana,2,2024
+6,10000005,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Lorena Vargas Cruz,1,Secundaria,A,Mañana,2,2024
+7,10000006,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Héctor Herrera Domínguez,1,Secundaria,A,Mañana,2,2024
+8,10000007,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Mónica Cruz Ramírez,1,Secundaria,A,Mañana,2,2024
+9,10000008,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Mateo Vázquez Castro,1,Secundaria,A,Mañana,2,2024
+10,10000009,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Laura Delgado Aguilar,1,Secundaria,A,Mañana,2,2024
+11,10000010,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Iván Díaz Lara,1,Secundaria,A,Mañana,2,2024
+12,10000011,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Carmen Suárez López,1,Secundaria,A,Mañana,2,2024
+13,10000012,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Óscar Gómez Fernández,1,Secundaria,A,Mañana,2,2024
+14,10000013,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Esperanza García Ramírez,1,Secundaria,A,Mañana,2,2024
+15,10000014,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Álvaro Martín Vázquez,1,Secundaria,A,Mañana,2,2024
+16,10000015,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Ana Jiménez Castro,1,Secundaria,A,Mañana,2,2024
+17,10000016,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Ignacio Fernández Navarro,1,Secundaria,A,Mañana,2,2024
+18,10000017,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Isabel Álvarez Ruiz,1,Secundaria,A,Mañana,2,2024
+19,10000018,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Pedro Romero Gutiérrez,1,Secundaria,A,Mañana,2,2024
+20,10000019,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Diana Morales Sánchez,1,Secundaria,A,Mañana,2,2024
+21,10000020,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Manuel Ruiz Flores,1,Secundaria,A,Mañana,2,2024
+22,10000021,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Andrea Gómez Díaz,1,Secundaria,A,Mañana,2,2024
+23,10000022,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Manuel Ortega López,1,Secundaria,A,Mañana,2,2024
+24,10000023,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Lorena Moreno Serrano,1,Secundaria,A,Mañana,2,2024
+25,10000024,1,2024-02-01,Inscripción año escolar 2024 - Curso 1A,Santiago Ruiz Sánchez,1,Secundaria,A,Mañana,2,2024
+26,10000025,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Miguel Flores Suárez,1,Secundaria,B,Mañana,2,2024
+27,10000026,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Jimena Jiménez Molina,1,Secundaria,B,Mañana,2,2024
+28,10000027,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Luis Aguilar Ramos,1,Secundaria,B,Mañana,2,2024
+29,10000028,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Ana Pérez Gutiérrez,1,Secundaria,B,Mañana,2,2024
+30,10000029,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Fernando Contreras Suárez,1,Secundaria,B,Mañana,2,2024
+31,10000030,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,María Ramos Álvarez,1,Secundaria,B,Mañana,2,2024
+32,10000031,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Juan Contreras Muñoz,1,Secundaria,B,Mañana,2,2024
+33,10000032,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,María Castro Delgado,1,Secundaria,B,Mañana,2,2024
+34,10000033,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Rafael Rubio Gil,1,Secundaria,B,Mañana,2,2024
+35,10000034,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Carmen Blanco Suárez,1,Secundaria,B,Mañana,2,2024
+36,10000035,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Javier Jiménez Castro,1,Secundaria,B,Mañana,2,2024
+37,10000036,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Esperanza Aguilar Rubio,1,Secundaria,B,Mañana,2,2024
+38,10000037,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Héctor Gutiérrez Díaz,1,Secundaria,B,Mañana,2,2024
+39,10000038,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Claudia Serrano López,1,Secundaria,B,Mañana,2,2024
+40,10000039,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Víctor Ortiz Díaz,1,Secundaria,B,Mañana,2,2024
+41,10000040,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Gabriela Marín Morales,1,Secundaria,B,Mañana,2,2024
+42,10000041,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Sergio Castro Ramírez,1,Secundaria,B,Mañana,2,2024
+43,10000042,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Valentina Ruiz Muñoz,1,Secundaria,B,Mañana,2,2024
+44,10000043,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Óscar Álvarez Gil,1,Secundaria,B,Mañana,2,2024
+45,10000044,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Jimena Jiménez Ortiz,1,Secundaria,B,Mañana,2,2024
+46,10000045,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Ignacio Sanz Morales,1,Secundaria,B,Mañana,2,2024
+47,10000046,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Sofía Aguilar Marín,1,Secundaria,B,Mañana,2,2024
+48,10000047,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Mateo Lara Muñoz,1,Secundaria,B,Mañana,2,2024
+49,10000048,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Raquel Moreno Romero,1,Secundaria,B,Mañana,2,2024
+50,10000049,2,2024-02-01,Inscripción año escolar 2024 - Curso 1B,Rafael Herrera Morales,1,Secundaria,B,Mañana,2,2024
+51,10000050,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Fernando Rivera Muñoz,2,Secundaria,A,Mañana,2,2024
+52,10000051,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Carolina Ortega Gil,2,Secundaria,A,Mañana,2,2024
+53,10000052,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Raúl Alonso Cruz,2,Secundaria,A,Mañana,2,2024
+54,10000053,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Paola Ramos Rubio,2,Secundaria,A,Mañana,2,2024
+55,10000054,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Rafael Ruiz Blanco,2,Secundaria,A,Mañana,2,2024
+56,10000055,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Esperanza Cruz Domínguez,2,Secundaria,A,Mañana,2,2024
+57,10000056,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Antonio Alonso Ramos,2,Secundaria,A,Mañana,2,2024
+58,10000057,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Mónica Ramos Marín,2,Secundaria,A,Mañana,2,2024
+59,10000058,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,David Jiménez Delgado,2,Secundaria,A,Mañana,2,2024
+60,10000059,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Valentina García Molina,2,Secundaria,A,Mañana,2,2024
+61,10000060,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Santiago Herrera Ramírez,2,Secundaria,A,Mañana,2,2024
+62,10000061,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Silvia Mendoza Ruiz,2,Secundaria,A,Mañana,2,2024
+63,10000062,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Gonzalo Contreras Sánchez,2,Secundaria,A,Mañana,2,2024
+64,10000063,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Laura Fernández Álvarez,2,Secundaria,A,Mañana,2,2024
+65,10000064,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Santiago Martín Iglesias,2,Secundaria,A,Mañana,2,2024
+66,10000065,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Isabella Martínez Díaz,2,Secundaria,A,Mañana,2,2024
+67,10000066,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Pedro Marín Ortega,2,Secundaria,A,Mañana,2,2024
+68,10000067,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Lucía Cruz Moreno,2,Secundaria,A,Mañana,2,2024
+69,10000068,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Diego Castro Gutiérrez,2,Secundaria,A,Mañana,2,2024
+70,10000069,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Valeria Ramos García,2,Secundaria,A,Mañana,2,2024
+71,10000070,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Iván Molina Muñoz,2,Secundaria,A,Mañana,2,2024
+72,10000071,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Verónica Delgado Gutiérrez,2,Secundaria,A,Mañana,2,2024
+73,10000072,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Gonzalo Molina Blanco,2,Secundaria,A,Mañana,2,2024
+74,10000073,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Lucía Alonso Ramírez,2,Secundaria,A,Mañana,2,2024
+75,10000074,3,2024-02-01,Inscripción año escolar 2024 - Curso 2A,Luis Serrano Castro,2,Secundaria,A,Mañana,2,2024
+76,10000075,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Carlos Rivera Navarro,2,Secundaria,B,Mañana,2,2024
+77,10000076,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Raquel Ortiz Álvarez,2,Secundaria,B,Mañana,2,2024
+78,10000077,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Mateo López Rivera,2,Secundaria,B,Mañana,2,2024
+79,10000078,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Pilar Lara Gutiérrez,2,Secundaria,B,Mañana,2,2024
+80,10000079,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Luis Gutiérrez Torres,2,Secundaria,B,Mañana,2,2024
+81,10000080,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Camila Ramírez Rivera,2,Secundaria,B,Mañana,2,2024
+82,10000081,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Víctor Suárez Muñoz,2,Secundaria,B,Mañana,2,2024
+83,10000082,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Sofía Serrano Vázquez,2,Secundaria,B,Mañana,2,2024
+84,10000083,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Tomás Iglesias Castro,2,Secundaria,B,Mañana,2,2024
+85,10000084,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Carolina Martín Martínez,2,Secundaria,B,Mañana,2,2024
+86,10000085,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,David Hernández Torres,2,Secundaria,B,Mañana,2,2024
+87,10000086,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Alejandra Ramos Delgado,2,Secundaria,B,Mañana,2,2024
+88,10000087,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Gabriel López Flores,2,Secundaria,B,Mañana,2,2024
+89,10000088,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Elena Ramos Díaz,2,Secundaria,B,Mañana,2,2024
+90,10000089,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Santiago Vázquez Molina,2,Secundaria,B,Mañana,2,2024
+91,10000090,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Patricia Castro Delgado,2,Secundaria,B,Mañana,2,2024
+92,10000091,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Raúl Marín Díaz,2,Secundaria,B,Mañana,2,2024
+93,10000092,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Jimena Martínez Blanco,2,Secundaria,B,Mañana,2,2024
+94,10000093,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Mateo Contreras González,2,Secundaria,B,Mañana,2,2024
+95,10000094,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Martina Vázquez Martín,2,Secundaria,B,Mañana,2,2024
+96,10000095,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Ricardo Sanz Martínez,2,Secundaria,B,Mañana,2,2024
+97,10000096,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Andrea Vargas Aguilar,2,Secundaria,B,Mañana,2,2024
+98,10000097,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Manuel Castro Rivera,2,Secundaria,B,Mañana,2,2024
+99,10000098,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Claudia Rodríguez Gómez,2,Secundaria,B,Mañana,2,2024
+100,10000099,4,2024-02-01,Inscripción año escolar 2024 - Curso 2B,Carlos Delgado Gómez,2,Secundaria,B,Mañana,2,2024
+101,10000100,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Rafael Castro Martín,3,Secundaria,A,Mañana,2,2024
+102,10000101,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Verónica Molina Contreras,3,Secundaria,A,Mañana,2,2024
+103,10000102,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Adrián Contreras Morales,3,Secundaria,A,Mañana,2,2024
+104,10000103,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Jimena González Sanz,3,Secundaria,A,Mañana,2,2024
+105,10000104,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Antonio Mendoza Torres,3,Secundaria,A,Mañana,2,2024
+106,10000105,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Natalia González Contreras,3,Secundaria,A,Mañana,2,2024
+107,10000106,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Eduardo Ortega Pérez,3,Secundaria,A,Mañana,2,2024
+108,10000107,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Sofía Gil Ortega,3,Secundaria,A,Mañana,2,2024
+109,10000108,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Rodrigo Suárez Pérez,3,Secundaria,A,Mañana,2,2024
+110,10000109,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Natalia Rodríguez Espinoza,3,Secundaria,A,Mañana,2,2024
+111,10000110,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Pablo Castro Herrera,3,Secundaria,A,Mañana,2,2024
+112,10000111,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Jimena Muñoz Sánchez,3,Secundaria,A,Mañana,2,2024
+113,10000112,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Gonzalo Ortega Jiménez,3,Secundaria,A,Mañana,2,2024
+114,10000113,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Ana Lara Serrano,3,Secundaria,A,Mañana,2,2024
+115,10000114,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Raúl Mendoza Contreras,3,Secundaria,A,Mañana,2,2024
+116,10000115,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Andrea Muñoz Ramírez,3,Secundaria,A,Mañana,2,2024
+117,10000116,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Adrián Flores Morales,3,Secundaria,A,Mañana,2,2024
+118,10000117,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Sandra Sanz Jiménez,3,Secundaria,A,Mañana,2,2024
+119,10000118,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Luis Serrano Muñoz,3,Secundaria,A,Mañana,2,2024
+120,10000119,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Lucía Rodríguez Cruz,3,Secundaria,A,Mañana,2,2024
+121,10000120,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Fernando Espinoza Blanco,3,Secundaria,A,Mañana,2,2024
+122,10000121,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Silvia Ruiz Fernández,3,Secundaria,A,Mañana,2,2024
+123,10000122,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,José Jiménez Espinoza,3,Secundaria,A,Mañana,2,2024
+124,10000123,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,Pilar Marín Blanco,3,Secundaria,A,Mañana,2,2024
+125,10000124,5,2024-02-01,Inscripción año escolar 2024 - Curso 3A,David Castro Gómez,3,Secundaria,A,Mañana,2,2024
+126,10000125,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Daniel García García,3,Secundaria,B,Mañana,2,2024
+127,10000126,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Carmen Mendoza Morales,3,Secundaria,B,Mañana,2,2024
+128,10000127,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Miguel Martín Herrera,3,Secundaria,B,Mañana,2,2024
+129,10000128,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Paola Aguilar Iglesias,3,Secundaria,B,Mañana,2,2024
+130,10000129,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Alejandro Ortiz Ruiz,3,Secundaria,B,Mañana,2,2024
+131,10000130,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Natalia Molina Castro,3,Secundaria,B,Mañana,2,2024
+132,10000131,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Rubén Contreras Romero,3,Secundaria,B,Mañana,2,2024
+133,10000132,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Rosa Espinoza Herrera,3,Secundaria,B,Mañana,2,2024
+134,10000133,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Carlos Ortiz Serrano,3,Secundaria,B,Mañana,2,2024
+135,10000134,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Natalia Alonso Ramírez,3,Secundaria,B,Mañana,2,2024
+136,10000135,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Juan Domínguez Sánchez,3,Secundaria,B,Mañana,2,2024
+137,10000136,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Diana Romero Morales,3,Secundaria,B,Mañana,2,2024
+138,10000137,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Mateo Díaz Vázquez,3,Secundaria,B,Mañana,2,2024
+139,10000138,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Mónica Rodríguez Martínez,3,Secundaria,B,Mañana,2,2024
+140,10000139,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Gabriel Blanco Suárez,3,Secundaria,B,Mañana,2,2024
+141,10000140,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Lorena Molina Rivera,3,Secundaria,B,Mañana,2,2024
+142,10000141,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Antonio Torres Hernández,3,Secundaria,B,Mañana,2,2024
+143,10000142,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Diana Muñoz Marín,3,Secundaria,B,Mañana,2,2024
+144,10000143,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Javier Vargas Castro,3,Secundaria,B,Mañana,2,2024
+145,10000144,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Verónica Rodríguez Suárez,3,Secundaria,B,Mañana,2,2024
+146,10000145,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Fernando Rodríguez Gutiérrez,3,Secundaria,B,Mañana,2,2024
+147,10000146,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Amanda Delgado Moreno,3,Secundaria,B,Mañana,2,2024
+148,10000147,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Gonzalo Herrera Mendoza,3,Secundaria,B,Mañana,2,2024
+149,10000148,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Renata Sanz Molina,3,Secundaria,B,Mañana,2,2024
+150,10000149,6,2024-02-01,Inscripción año escolar 2024 - Curso 3B,Gonzalo Lara Martínez,3,Secundaria,B,Mañana,2,2024
+151,10000150,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Óscar Fernández Torres,4,Secundaria,A,Mañana,2,2024
+152,10000151,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Beatriz Martínez Ruiz,4,Secundaria,A,Mañana,2,2024
+153,10000152,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Fernando Álvarez Lara,4,Secundaria,A,Mañana,2,2024
+154,10000153,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Isabella Aguilar Fernández,4,Secundaria,A,Mañana,2,2024
+155,10000154,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Roberto Cruz Vargas,4,Secundaria,A,Mañana,2,2024
+156,10000155,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Amanda Serrano Vázquez,4,Secundaria,A,Mañana,2,2024
+157,10000156,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Nicolás Rodríguez Suárez,4,Secundaria,A,Mañana,2,2024
+158,10000157,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Sofía Álvarez Suárez,4,Secundaria,A,Mañana,2,2024
+159,10000158,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Rodrigo Álvarez Vargas,4,Secundaria,A,Mañana,2,2024
+160,10000159,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Jimena Alonso Vázquez,4,Secundaria,A,Mañana,2,2024
+161,10000160,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Miguel Morales Delgado,4,Secundaria,A,Mañana,2,2024
+162,10000161,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Paola Morales Navarro,4,Secundaria,A,Mañana,2,2024
+163,10000162,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Andrés Fernández Rodríguez,4,Secundaria,A,Mañana,2,2024
+164,10000163,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Jimena Cruz Lara,4,Secundaria,A,Mañana,2,2024
+165,10000164,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Pablo Torres González,4,Secundaria,A,Mañana,2,2024
+166,10000165,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Valentina Herrera Herrera,4,Secundaria,A,Mañana,2,2024
+167,10000166,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Santiago Domínguez Martín,4,Secundaria,A,Mañana,2,2024
+168,10000167,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,María Ruiz Aguilar,4,Secundaria,A,Mañana,2,2024
+169,10000168,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Adrián Gómez Rodríguez,4,Secundaria,A,Mañana,2,2024
+170,10000169,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Martina Gil Ruiz,4,Secundaria,A,Mañana,2,2024
+171,10000170,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Daniel Delgado Díaz,4,Secundaria,A,Mañana,2,2024
+172,10000171,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Rosa Morales Blanco,4,Secundaria,A,Mañana,2,2024
+173,10000172,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Rodrigo Martín Rubio,4,Secundaria,A,Mañana,2,2024
+174,10000173,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Isabel Domínguez Sanz,4,Secundaria,A,Mañana,2,2024
+175,10000174,7,2024-02-01,Inscripción año escolar 2024 - Curso 4A,Carlos García Rodríguez,4,Secundaria,A,Mañana,2,2024
+176,10000175,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,Carlos Álvarez López,4,Secundaria,B,Mañana,2,2024
+177,10000176,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,Valentina Alonso Serrano,4,Secundaria,B,Mañana,2,2024
+178,10000177,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,Mateo Díaz Serrano,4,Secundaria,B,Mañana,2,2024
+179,10000178,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,Fernanda Vázquez Delgado,4,Secundaria,B,Mañana,2,2024
+180,10000179,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,Francisco Marín Ortiz,4,Secundaria,B,Mañana,2,2024
+181,10000180,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,Lorena Domínguez Blanco,4,Secundaria,B,Mañana,2,2024
+182,10000181,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,Adrián Domínguez Lara,4,Secundaria,B,Mañana,2,2024
+183,10000182,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,Isabella Torres Gómez,4,Secundaria,B,Mañana,2,2024
+184,10000183,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,David Rodríguez Díaz,4,Secundaria,B,Mañana,2,2024
+185,10000184,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,Mónica Ramos Muñoz,4,Secundaria,B,Mañana,2,2024
+186,10000185,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,José Serrano Domínguez,4,Secundaria,B,Mañana,2,2024
+187,10000186,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,Isabella Espinoza Sanz,4,Secundaria,B,Mañana,2,2024
+188,10000187,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,Carlos Díaz Espinoza,4,Secundaria,B,Mañana,2,2024
+189,10000188,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,Lorena Blanco Muñoz,4,Secundaria,B,Mañana,2,2024
+190,10000189,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,Juan Muñoz Domínguez,4,Secundaria,B,Mañana,2,2024
+191,10000190,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,Jimena Delgado Torres,4,Secundaria,B,Mañana,2,2024
+192,10000191,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,Javier Muñoz Álvarez,4,Secundaria,B,Mañana,2,2024
+193,10000192,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,María Contreras Castro,4,Secundaria,B,Mañana,2,2024
+194,10000193,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,Iván Moreno Vargas,4,Secundaria,B,Mañana,2,2024
+195,10000194,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,Isabel Castro Torres,4,Secundaria,B,Mañana,2,2024
+196,10000195,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,Fernando Gutiérrez Sánchez,4,Secundaria,B,Mañana,2,2024
+197,10000196,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,Verónica Gil Serrano,4,Secundaria,B,Mañana,2,2024
+198,10000197,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,Raúl Morales Alonso,4,Secundaria,B,Mañana,2,2024
+199,10000198,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,Claudia Moreno Romero,4,Secundaria,B,Mañana,2,2024
+200,10000199,8,2024-02-01,Inscripción año escolar 2024 - Curso 4B,Raúl Contreras Álvarez,4,Secundaria,B,Mañana,2,2024
+201,10000200,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Carlos Vázquez Álvarez,5,Secundaria,A,Mañana,2,2024
+202,10000201,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Amanda Aguilar Rivera,5,Secundaria,A,Mañana,2,2024
+203,10000202,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Andrés Pérez López,5,Secundaria,A,Mañana,2,2024
+204,10000203,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Verónica Hernández Suárez,5,Secundaria,A,Mañana,2,2024
+205,10000204,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Rubén Ramírez González,5,Secundaria,A,Mañana,2,2024
+206,10000205,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Patricia Rubio Herrera,5,Secundaria,A,Mañana,2,2024
+207,10000206,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Carlos Ortiz Suárez,5,Secundaria,A,Mañana,2,2024
+208,10000207,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Pilar Flores Ruiz,5,Secundaria,A,Mañana,2,2024
+209,10000208,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Miguel Aguilar Álvarez,5,Secundaria,A,Mañana,2,2024
+210,10000209,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Elena Martínez Ramírez,5,Secundaria,A,Mañana,2,2024
+211,10000210,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Antonio Ramírez Blanco,5,Secundaria,A,Mañana,2,2024
+212,10000211,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Isabel Morales Blanco,5,Secundaria,A,Mañana,2,2024
+213,10000212,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Rubén Rubio Iglesias,5,Secundaria,A,Mañana,2,2024
+214,10000213,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Rosa Cruz Díaz,5,Secundaria,A,Mañana,2,2024
+215,10000214,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Sebastián Romero Mendoza,5,Secundaria,A,Mañana,2,2024
+216,10000215,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Carolina Vargas Martínez,5,Secundaria,A,Mañana,2,2024
+217,10000216,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Tomás Herrera Navarro,5,Secundaria,A,Mañana,2,2024
+218,10000217,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Esperanza Serrano Vargas,5,Secundaria,A,Mañana,2,2024
+219,10000218,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Óscar Delgado Vázquez,5,Secundaria,A,Mañana,2,2024
+220,10000219,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Mónica Mendoza Ruiz,5,Secundaria,A,Mañana,2,2024
+221,10000220,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Eduardo Mendoza Gil,5,Secundaria,A,Mañana,2,2024
+222,10000221,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Camila Navarro Delgado,5,Secundaria,A,Mañana,2,2024
+223,10000222,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Ignacio Contreras Castro,5,Secundaria,A,Mañana,2,2024
+224,10000223,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Carmen Iglesias Sanz,5,Secundaria,A,Mañana,2,2024
+225,10000224,9,2024-02-01,Inscripción año escolar 2024 - Curso 5A,Carlos Alonso Delgado,5,Secundaria,A,Mañana,2,2024
+226,10000225,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Sergio Alonso Moreno,5,Secundaria,B,Mañana,2,2024
+227,10000226,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Diana Cruz Castro,5,Secundaria,B,Mañana,2,2024
+228,10000227,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Santiago Sanz Álvarez,5,Secundaria,B,Mañana,2,2024
+229,10000228,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Ana Serrano López,5,Secundaria,B,Mañana,2,2024
+230,10000229,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Javier Martínez Vargas,5,Secundaria,B,Mañana,2,2024
+231,10000230,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Isabella Moreno Navarro,5,Secundaria,B,Mañana,2,2024
+232,10000231,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Fernando Álvarez Romero,5,Secundaria,B,Mañana,2,2024
+233,10000232,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Inés Iglesias Contreras,5,Secundaria,B,Mañana,2,2024
+234,10000233,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Emilio Aguilar Marín,5,Secundaria,B,Mañana,2,2024
+235,10000234,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Valentina Gutiérrez García,5,Secundaria,B,Mañana,2,2024
+236,10000235,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Eduardo Vargas Martínez,5,Secundaria,B,Mañana,2,2024
+237,10000236,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,María Serrano Serrano,5,Secundaria,B,Mañana,2,2024
+238,10000237,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Nicolás Serrano Morales,5,Secundaria,B,Mañana,2,2024
+239,10000238,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Patricia Molina Hernández,5,Secundaria,B,Mañana,2,2024
+240,10000239,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Andrés Delgado Ortiz,5,Secundaria,B,Mañana,2,2024
+241,10000240,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Verónica Jiménez Marín,5,Secundaria,B,Mañana,2,2024
+242,10000241,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Manuel Ortiz Martín,5,Secundaria,B,Mañana,2,2024
+243,10000242,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Andrea Vázquez Ortega,5,Secundaria,B,Mañana,2,2024
+244,10000243,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Ignacio Sanz Ruiz,5,Secundaria,B,Mañana,2,2024
+245,10000244,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Inés Jiménez Vargas,5,Secundaria,B,Mañana,2,2024
+246,10000245,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Juan Pérez Delgado,5,Secundaria,B,Mañana,2,2024
+247,10000246,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Gabriela Marín Hernández,5,Secundaria,B,Mañana,2,2024
+248,10000247,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Alejandro Ortega Espinoza,5,Secundaria,B,Mañana,2,2024
+249,10000248,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Lorena Vázquez Blanco,5,Secundaria,B,Mañana,2,2024
+250,10000249,10,2024-02-01,Inscripción año escolar 2024 - Curso 5B,Luis Martín Gil,5,Secundaria,B,Mañana,2,2024
+251,10000250,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Ricardo Cruz Fernández,6,Secundaria,A,Mañana,2,2024
+252,10000251,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Claudia Iglesias Ramírez,6,Secundaria,A,Mañana,2,2024
+253,10000252,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Miguel Gómez Díaz,6,Secundaria,A,Mañana,2,2024
+254,10000253,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Renata Jiménez Sánchez,6,Secundaria,A,Mañana,2,2024
+255,10000254,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Raúl Blanco Espinoza,6,Secundaria,A,Mañana,2,2024
+256,10000255,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Amanda Espinoza Castro,6,Secundaria,A,Mañana,2,2024
+257,10000256,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Antonio Ortega Ruiz,6,Secundaria,A,Mañana,2,2024
+258,10000257,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Lorena Sánchez Ramírez,6,Secundaria,A,Mañana,2,2024
+259,10000258,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Fernando Moreno Ruiz,6,Secundaria,A,Mañana,2,2024
+260,10000259,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Paola Blanco Ramírez,6,Secundaria,A,Mañana,2,2024
+261,10000260,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Mateo Sánchez García,6,Secundaria,A,Mañana,2,2024
+262,10000261,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Natalia Jiménez Lara,6,Secundaria,A,Mañana,2,2024
+263,10000262,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Fernando Pérez Gómez,6,Secundaria,A,Mañana,2,2024
+264,10000263,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Martina Suárez Herrera,6,Secundaria,A,Mañana,2,2024
+265,10000264,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,José Delgado Álvarez,6,Secundaria,A,Mañana,2,2024
+266,10000265,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Patricia Ortiz Marín,6,Secundaria,A,Mañana,2,2024
+267,10000266,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Sebastián Lara Espinoza,6,Secundaria,A,Mañana,2,2024
+268,10000267,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Fernanda Gil Delgado,6,Secundaria,A,Mañana,2,2024
+269,10000268,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Tomás Gómez Ramos,6,Secundaria,A,Mañana,2,2024
+270,10000269,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Laura Aguilar Moreno,6,Secundaria,A,Mañana,2,2024
+271,10000270,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Sergio Sánchez Hernández,6,Secundaria,A,Mañana,2,2024
+272,10000271,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Rosa Sánchez Martínez,6,Secundaria,A,Mañana,2,2024
+273,10000272,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Gabriel Cruz Fernández,6,Secundaria,A,Mañana,2,2024
+274,10000273,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Laura Delgado Torres,6,Secundaria,A,Mañana,2,2024
+275,10000274,11,2024-02-01,Inscripción año escolar 2024 - Curso 6A,Fernando Rivera Ortiz,6,Secundaria,A,Mañana,2,2024
+276,10000275,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Tomás Jiménez Martínez,6,Secundaria,B,Mañana,2,2024
+277,10000276,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,María Contreras Gil,6,Secundaria,B,Mañana,2,2024
+278,10000277,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Emilio Serrano González,6,Secundaria,B,Mañana,2,2024
+279,10000278,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Valentina Mendoza Rodríguez,6,Secundaria,B,Mañana,2,2024
+280,10000279,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Eduardo Serrano Iglesias,6,Secundaria,B,Mañana,2,2024
+281,10000280,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Valeria Díaz Molina,6,Secundaria,B,Mañana,2,2024
+282,10000281,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Andrés Ortega González,6,Secundaria,B,Mañana,2,2024
+283,10000282,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Renata Ortega Muñoz,6,Secundaria,B,Mañana,2,2024
+284,10000283,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Nicolás Muñoz Iglesias,6,Secundaria,B,Mañana,2,2024
+285,10000284,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Raquel Gómez Blanco,6,Secundaria,B,Mañana,2,2024
+286,10000285,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Nicolás Pérez Ortega,6,Secundaria,B,Mañana,2,2024
+287,10000286,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Valeria Torres Gil,6,Secundaria,B,Mañana,2,2024
+288,10000287,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Manuel Espinoza Álvarez,6,Secundaria,B,Mañana,2,2024
+289,10000288,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Lorena Delgado Martín,6,Secundaria,B,Mañana,2,2024
+290,10000289,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Víctor Castro Rivera,6,Secundaria,B,Mañana,2,2024
+291,10000290,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Renata Cruz Romero,6,Secundaria,B,Mañana,2,2024
+292,10000291,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Ricardo Ramos Delgado,6,Secundaria,B,Mañana,2,2024
+293,10000292,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Camila Sánchez Ortega,6,Secundaria,B,Mañana,2,2024
+294,10000293,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Gonzalo Aguilar Domínguez,6,Secundaria,B,Mañana,2,2024
+295,10000294,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Lorena Martín Morales,6,Secundaria,B,Mañana,2,2024
+296,10000295,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Mateo Torres Gómez,6,Secundaria,B,Mañana,2,2024
+297,10000296,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Carmen Sánchez Aguilar,6,Secundaria,B,Mañana,2,2024
+298,10000297,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Diego González Torres,6,Secundaria,B,Mañana,2,2024
+299,10000298,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Elena Romero González,6,Secundaria,B,Mañana,2,2024
+300,10000299,12,2024-02-01,Inscripción año escolar 2024 - Curso 6B,Javier Molina Espinoza,6,Secundaria,B,Mañana,2,2024
+301,10000000,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Pablo Espinoza Navarro,2,Secundaria,A,Mañana,2,2025
+302,10000001,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Carolina Marín Herrera,2,Secundaria,A,Mañana,2,2025
+303,10000002,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Daniel Molina Ortiz,2,Secundaria,A,Mañana,2,2025
+304,10000003,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Gabriela García Ramos,2,Secundaria,A,Mañana,2,2025
+305,10000004,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Iván Ortega Muñoz,2,Secundaria,A,Mañana,2,2025
+306,10000005,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Lorena Vargas Cruz,2,Secundaria,A,Mañana,2,2025
+307,10000006,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Héctor Herrera Domínguez,2,Secundaria,A,Mañana,2,2025
+308,10000007,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Mónica Cruz Ramírez,2,Secundaria,A,Mañana,2,2025
+309,10000008,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Mateo Vázquez Castro,2,Secundaria,A,Mañana,2,2025
+310,10000009,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Laura Delgado Aguilar,2,Secundaria,A,Mañana,2,2025
+311,10000010,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Iván Díaz Lara,2,Secundaria,A,Mañana,2,2025
+312,10000011,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Carmen Suárez López,2,Secundaria,A,Mañana,2,2025
+313,10000012,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Óscar Gómez Fernández,2,Secundaria,A,Mañana,2,2025
+314,10000013,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Esperanza García Ramírez,2,Secundaria,A,Mañana,2,2025
+315,10000014,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Álvaro Martín Vázquez,2,Secundaria,A,Mañana,2,2025
+316,10000015,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Ana Jiménez Castro,2,Secundaria,A,Mañana,2,2025
+317,10000016,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Ignacio Fernández Navarro,2,Secundaria,A,Mañana,2,2025
+318,10000017,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Isabel Álvarez Ruiz,2,Secundaria,A,Mañana,2,2025
+319,10000018,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Pedro Romero Gutiérrez,2,Secundaria,A,Mañana,2,2025
+320,10000019,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Diana Morales Sánchez,2,Secundaria,A,Mañana,2,2025
+321,10000020,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Manuel Ruiz Flores,2,Secundaria,A,Mañana,2,2025
+322,10000021,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Andrea Gómez Díaz,2,Secundaria,A,Mañana,2,2025
+323,10000022,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Manuel Ortega López,2,Secundaria,A,Mañana,2,2025
+324,10000023,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Lorena Moreno Serrano,2,Secundaria,A,Mañana,2,2025
+325,10000024,3,2025-02-01,Inscripción año escolar 2025 - Promovido a 2A,Santiago Ruiz Sánchez,2,Secundaria,A,Mañana,2,2025
+326,10000025,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Miguel Flores Suárez,2,Secundaria,B,Mañana,2,2025
+327,10000026,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Jimena Jiménez Molina,2,Secundaria,B,Mañana,2,2025
+328,10000027,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Luis Aguilar Ramos,2,Secundaria,B,Mañana,2,2025
+329,10000028,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Ana Pérez Gutiérrez,2,Secundaria,B,Mañana,2,2025
+330,10000029,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Fernando Contreras Suárez,2,Secundaria,B,Mañana,2,2025
+331,10000030,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,María Ramos Álvarez,2,Secundaria,B,Mañana,2,2025
+332,10000031,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Juan Contreras Muñoz,2,Secundaria,B,Mañana,2,2025
+333,10000032,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,María Castro Delgado,2,Secundaria,B,Mañana,2,2025
+334,10000033,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Rafael Rubio Gil,2,Secundaria,B,Mañana,2,2025
+335,10000034,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Carmen Blanco Suárez,2,Secundaria,B,Mañana,2,2025
+336,10000035,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Javier Jiménez Castro,2,Secundaria,B,Mañana,2,2025
+337,10000036,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Esperanza Aguilar Rubio,2,Secundaria,B,Mañana,2,2025
+338,10000037,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Héctor Gutiérrez Díaz,2,Secundaria,B,Mañana,2,2025
+339,10000038,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Claudia Serrano López,2,Secundaria,B,Mañana,2,2025
+340,10000039,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Víctor Ortiz Díaz,2,Secundaria,B,Mañana,2,2025
+341,10000040,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Gabriela Marín Morales,2,Secundaria,B,Mañana,2,2025
+342,10000041,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Sergio Castro Ramírez,2,Secundaria,B,Mañana,2,2025
+343,10000042,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Valentina Ruiz Muñoz,2,Secundaria,B,Mañana,2,2025
+344,10000043,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Óscar Álvarez Gil,2,Secundaria,B,Mañana,2,2025
+345,10000044,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Jimena Jiménez Ortiz,2,Secundaria,B,Mañana,2,2025
+346,10000045,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Ignacio Sanz Morales,2,Secundaria,B,Mañana,2,2025
+347,10000046,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Sofía Aguilar Marín,2,Secundaria,B,Mañana,2,2025
+348,10000047,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Mateo Lara Muñoz,2,Secundaria,B,Mañana,2,2025
+349,10000048,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Raquel Moreno Romero,2,Secundaria,B,Mañana,2,2025
+350,10000049,4,2025-02-01,Inscripción año escolar 2025 - Promovido a 2B,Rafael Herrera Morales,2,Secundaria,B,Mañana,2,2025
+351,10000050,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Fernando Rivera Muñoz,3,Secundaria,A,Mañana,2,2025
+352,10000051,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Carolina Ortega Gil,3,Secundaria,A,Mañana,2,2025
+353,10000052,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Raúl Alonso Cruz,3,Secundaria,A,Mañana,2,2025
+354,10000053,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Paola Ramos Rubio,3,Secundaria,A,Mañana,2,2025
+355,10000054,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Rafael Ruiz Blanco,3,Secundaria,A,Mañana,2,2025
+356,10000055,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Esperanza Cruz Domínguez,3,Secundaria,A,Mañana,2,2025
+357,10000056,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Antonio Alonso Ramos,3,Secundaria,A,Mañana,2,2025
+358,10000057,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Mónica Ramos Marín,3,Secundaria,A,Mañana,2,2025
+359,10000058,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,David Jiménez Delgado,3,Secundaria,A,Mañana,2,2025
+360,10000059,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Valentina García Molina,3,Secundaria,A,Mañana,2,2025
+361,10000060,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Santiago Herrera Ramírez,3,Secundaria,A,Mañana,2,2025
+362,10000061,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Silvia Mendoza Ruiz,3,Secundaria,A,Mañana,2,2025
+363,10000062,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Gonzalo Contreras Sánchez,3,Secundaria,A,Mañana,2,2025
+364,10000063,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Laura Fernández Álvarez,3,Secundaria,A,Mañana,2,2025
+365,10000064,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Santiago Martín Iglesias,3,Secundaria,A,Mañana,2,2025
+366,10000065,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Isabella Martínez Díaz,3,Secundaria,A,Mañana,2,2025
+367,10000066,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Pedro Marín Ortega,3,Secundaria,A,Mañana,2,2025
+368,10000067,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Lucía Cruz Moreno,3,Secundaria,A,Mañana,2,2025
+369,10000068,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Diego Castro Gutiérrez,3,Secundaria,A,Mañana,2,2025
+370,10000069,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Valeria Ramos García,3,Secundaria,A,Mañana,2,2025
+371,10000070,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Iván Molina Muñoz,3,Secundaria,A,Mañana,2,2025
+372,10000071,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Verónica Delgado Gutiérrez,3,Secundaria,A,Mañana,2,2025
+373,10000072,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Gonzalo Molina Blanco,3,Secundaria,A,Mañana,2,2025
+374,10000073,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Lucía Alonso Ramírez,3,Secundaria,A,Mañana,2,2025
+375,10000074,5,2025-02-01,Inscripción año escolar 2025 - Promovido a 3A,Luis Serrano Castro,3,Secundaria,A,Mañana,2,2025
+376,10000075,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Carlos Rivera Navarro,3,Secundaria,B,Mañana,2,2025
+377,10000076,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Raquel Ortiz Álvarez,3,Secundaria,B,Mañana,2,2025
+378,10000077,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Mateo López Rivera,3,Secundaria,B,Mañana,2,2025
+379,10000078,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Pilar Lara Gutiérrez,3,Secundaria,B,Mañana,2,2025
+380,10000079,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Luis Gutiérrez Torres,3,Secundaria,B,Mañana,2,2025
+381,10000080,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Camila Ramírez Rivera,3,Secundaria,B,Mañana,2,2025
+382,10000081,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Víctor Suárez Muñoz,3,Secundaria,B,Mañana,2,2025
+383,10000082,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Sofía Serrano Vázquez,3,Secundaria,B,Mañana,2,2025
+384,10000083,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Tomás Iglesias Castro,3,Secundaria,B,Mañana,2,2025
+385,10000084,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Carolina Martín Martínez,3,Secundaria,B,Mañana,2,2025
+386,10000085,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,David Hernández Torres,3,Secundaria,B,Mañana,2,2025
+387,10000086,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Alejandra Ramos Delgado,3,Secundaria,B,Mañana,2,2025
+388,10000087,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Gabriel López Flores,3,Secundaria,B,Mañana,2,2025
+389,10000088,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Elena Ramos Díaz,3,Secundaria,B,Mañana,2,2025
+390,10000089,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Santiago Vázquez Molina,3,Secundaria,B,Mañana,2,2025
+391,10000090,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Patricia Castro Delgado,3,Secundaria,B,Mañana,2,2025
+392,10000091,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Raúl Marín Díaz,3,Secundaria,B,Mañana,2,2025
+393,10000092,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Jimena Martínez Blanco,3,Secundaria,B,Mañana,2,2025
+394,10000093,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Mateo Contreras González,3,Secundaria,B,Mañana,2,2025
+395,10000094,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Martina Vázquez Martín,3,Secundaria,B,Mañana,2,2025
+396,10000095,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Ricardo Sanz Martínez,3,Secundaria,B,Mañana,2,2025
+397,10000096,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Andrea Vargas Aguilar,3,Secundaria,B,Mañana,2,2025
+398,10000097,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Manuel Castro Rivera,3,Secundaria,B,Mañana,2,2025
+399,10000098,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Claudia Rodríguez Gómez,3,Secundaria,B,Mañana,2,2025
+400,10000099,6,2025-02-01,Inscripción año escolar 2025 - Promovido a 3B,Carlos Delgado Gómez,3,Secundaria,B,Mañana,2,2025
+401,10000100,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Rafael Castro Martín,4,Secundaria,A,Mañana,2,2025
+402,10000101,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Verónica Molina Contreras,4,Secundaria,A,Mañana,2,2025
+403,10000102,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Adrián Contreras Morales,4,Secundaria,A,Mañana,2,2025
+404,10000103,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Jimena González Sanz,4,Secundaria,A,Mañana,2,2025
+405,10000104,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Antonio Mendoza Torres,4,Secundaria,A,Mañana,2,2025
+406,10000105,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Natalia González Contreras,4,Secundaria,A,Mañana,2,2025
+407,10000106,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Eduardo Ortega Pérez,4,Secundaria,A,Mañana,2,2025
+408,10000107,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Sofía Gil Ortega,4,Secundaria,A,Mañana,2,2025
+409,10000108,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Rodrigo Suárez Pérez,4,Secundaria,A,Mañana,2,2025
+410,10000109,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Natalia Rodríguez Espinoza,4,Secundaria,A,Mañana,2,2025
+411,10000110,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Pablo Castro Herrera,4,Secundaria,A,Mañana,2,2025
+412,10000111,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Jimena Muñoz Sánchez,4,Secundaria,A,Mañana,2,2025
+413,10000112,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Gonzalo Ortega Jiménez,4,Secundaria,A,Mañana,2,2025
+414,10000113,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Ana Lara Serrano,4,Secundaria,A,Mañana,2,2025
+415,10000114,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Raúl Mendoza Contreras,4,Secundaria,A,Mañana,2,2025
+416,10000115,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Andrea Muñoz Ramírez,4,Secundaria,A,Mañana,2,2025
+417,10000116,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Adrián Flores Morales,4,Secundaria,A,Mañana,2,2025
+418,10000117,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Sandra Sanz Jiménez,4,Secundaria,A,Mañana,2,2025
+419,10000118,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Luis Serrano Muñoz,4,Secundaria,A,Mañana,2,2025
+420,10000119,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Lucía Rodríguez Cruz,4,Secundaria,A,Mañana,2,2025
+421,10000120,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Fernando Espinoza Blanco,4,Secundaria,A,Mañana,2,2025
+422,10000121,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Silvia Ruiz Fernández,4,Secundaria,A,Mañana,2,2025
+423,10000122,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,José Jiménez Espinoza,4,Secundaria,A,Mañana,2,2025
+424,10000123,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,Pilar Marín Blanco,4,Secundaria,A,Mañana,2,2025
+425,10000124,7,2025-02-01,Inscripción año escolar 2025 - Promovido a 4A,David Castro Gómez,4,Secundaria,A,Mañana,2,2025
+426,10000125,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Daniel García García,4,Secundaria,B,Mañana,2,2025
+427,10000126,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Carmen Mendoza Morales,4,Secundaria,B,Mañana,2,2025
+428,10000127,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Miguel Martín Herrera,4,Secundaria,B,Mañana,2,2025
+429,10000128,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Paola Aguilar Iglesias,4,Secundaria,B,Mañana,2,2025
+430,10000129,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Alejandro Ortiz Ruiz,4,Secundaria,B,Mañana,2,2025
+431,10000130,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Natalia Molina Castro,4,Secundaria,B,Mañana,2,2025
+432,10000131,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Rubén Contreras Romero,4,Secundaria,B,Mañana,2,2025
+433,10000132,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Rosa Espinoza Herrera,4,Secundaria,B,Mañana,2,2025
+434,10000133,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Carlos Ortiz Serrano,4,Secundaria,B,Mañana,2,2025
+435,10000134,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Natalia Alonso Ramírez,4,Secundaria,B,Mañana,2,2025
+436,10000135,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Juan Domínguez Sánchez,4,Secundaria,B,Mañana,2,2025
+437,10000136,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Diana Romero Morales,4,Secundaria,B,Mañana,2,2025
+438,10000137,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Mateo Díaz Vázquez,4,Secundaria,B,Mañana,2,2025
+439,10000138,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Mónica Rodríguez Martínez,4,Secundaria,B,Mañana,2,2025
+440,10000139,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Gabriel Blanco Suárez,4,Secundaria,B,Mañana,2,2025
+441,10000140,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Lorena Molina Rivera,4,Secundaria,B,Mañana,2,2025
+442,10000141,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Antonio Torres Hernández,4,Secundaria,B,Mañana,2,2025
+443,10000142,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Diana Muñoz Marín,4,Secundaria,B,Mañana,2,2025
+444,10000143,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Javier Vargas Castro,4,Secundaria,B,Mañana,2,2025
+445,10000144,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Verónica Rodríguez Suárez,4,Secundaria,B,Mañana,2,2025
+446,10000145,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Fernando Rodríguez Gutiérrez,4,Secundaria,B,Mañana,2,2025
+447,10000146,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Amanda Delgado Moreno,4,Secundaria,B,Mañana,2,2025
+448,10000147,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Gonzalo Herrera Mendoza,4,Secundaria,B,Mañana,2,2025
+449,10000148,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Renata Sanz Molina,4,Secundaria,B,Mañana,2,2025
+450,10000149,8,2025-02-01,Inscripción año escolar 2025 - Promovido a 4B,Gonzalo Lara Martínez,4,Secundaria,B,Mañana,2,2025
+451,10000150,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Óscar Fernández Torres,5,Secundaria,A,Mañana,2,2025
+452,10000151,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Beatriz Martínez Ruiz,5,Secundaria,A,Mañana,2,2025
+453,10000152,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Fernando Álvarez Lara,5,Secundaria,A,Mañana,2,2025
+454,10000153,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Isabella Aguilar Fernández,5,Secundaria,A,Mañana,2,2025
+455,10000154,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Roberto Cruz Vargas,5,Secundaria,A,Mañana,2,2025
+456,10000155,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Amanda Serrano Vázquez,5,Secundaria,A,Mañana,2,2025
+457,10000156,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Nicolás Rodríguez Suárez,5,Secundaria,A,Mañana,2,2025
+458,10000157,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Sofía Álvarez Suárez,5,Secundaria,A,Mañana,2,2025
+459,10000158,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Rodrigo Álvarez Vargas,5,Secundaria,A,Mañana,2,2025
+460,10000159,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Jimena Alonso Vázquez,5,Secundaria,A,Mañana,2,2025
+461,10000160,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Miguel Morales Delgado,5,Secundaria,A,Mañana,2,2025
+462,10000161,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Paola Morales Navarro,5,Secundaria,A,Mañana,2,2025
+463,10000162,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Andrés Fernández Rodríguez,5,Secundaria,A,Mañana,2,2025
+464,10000163,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Jimena Cruz Lara,5,Secundaria,A,Mañana,2,2025
+465,10000164,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Pablo Torres González,5,Secundaria,A,Mañana,2,2025
+466,10000165,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Valentina Herrera Herrera,5,Secundaria,A,Mañana,2,2025
+467,10000166,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Santiago Domínguez Martín,5,Secundaria,A,Mañana,2,2025
+468,10000167,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,María Ruiz Aguilar,5,Secundaria,A,Mañana,2,2025
+469,10000168,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Adrián Gómez Rodríguez,5,Secundaria,A,Mañana,2,2025
+470,10000169,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Martina Gil Ruiz,5,Secundaria,A,Mañana,2,2025
+471,10000170,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Daniel Delgado Díaz,5,Secundaria,A,Mañana,2,2025
+472,10000171,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Rosa Morales Blanco,5,Secundaria,A,Mañana,2,2025
+473,10000172,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Rodrigo Martín Rubio,5,Secundaria,A,Mañana,2,2025
+474,10000173,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Isabel Domínguez Sanz,5,Secundaria,A,Mañana,2,2025
+475,10000174,9,2025-02-01,Inscripción año escolar 2025 - Promovido a 5A,Carlos García Rodríguez,5,Secundaria,A,Mañana,2,2025
+476,10000175,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,Carlos Álvarez López,5,Secundaria,B,Mañana,2,2025
+477,10000176,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,Valentina Alonso Serrano,5,Secundaria,B,Mañana,2,2025
+478,10000177,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,Mateo Díaz Serrano,5,Secundaria,B,Mañana,2,2025
+479,10000178,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,Fernanda Vázquez Delgado,5,Secundaria,B,Mañana,2,2025
+480,10000179,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,Francisco Marín Ortiz,5,Secundaria,B,Mañana,2,2025
+481,10000180,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,Lorena Domínguez Blanco,5,Secundaria,B,Mañana,2,2025
+482,10000181,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,Adrián Domínguez Lara,5,Secundaria,B,Mañana,2,2025
+483,10000182,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,Isabella Torres Gómez,5,Secundaria,B,Mañana,2,2025
+484,10000183,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,David Rodríguez Díaz,5,Secundaria,B,Mañana,2,2025
+485,10000184,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,Mónica Ramos Muñoz,5,Secundaria,B,Mañana,2,2025
+486,10000185,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,José Serrano Domínguez,5,Secundaria,B,Mañana,2,2025
+487,10000186,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,Isabella Espinoza Sanz,5,Secundaria,B,Mañana,2,2025
+488,10000187,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,Carlos Díaz Espinoza,5,Secundaria,B,Mañana,2,2025
+489,10000188,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,Lorena Blanco Muñoz,5,Secundaria,B,Mañana,2,2025
+490,10000189,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,Juan Muñoz Domínguez,5,Secundaria,B,Mañana,2,2025
+491,10000190,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,Jimena Delgado Torres,5,Secundaria,B,Mañana,2,2025
+492,10000191,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,Javier Muñoz Álvarez,5,Secundaria,B,Mañana,2,2025
+493,10000192,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,María Contreras Castro,5,Secundaria,B,Mañana,2,2025
+494,10000193,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,Iván Moreno Vargas,5,Secundaria,B,Mañana,2,2025
+495,10000194,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,Isabel Castro Torres,5,Secundaria,B,Mañana,2,2025
+496,10000195,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,Fernando Gutiérrez Sánchez,5,Secundaria,B,Mañana,2,2025
+497,10000196,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,Verónica Gil Serrano,5,Secundaria,B,Mañana,2,2025
+498,10000197,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,Raúl Morales Alonso,5,Secundaria,B,Mañana,2,2025
+499,10000198,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,Claudia Moreno Romero,5,Secundaria,B,Mañana,2,2025
+500,10000199,10,2025-02-01,Inscripción año escolar 2025 - Promovido a 5B,Raúl Contreras Álvarez,5,Secundaria,B,Mañana,2,2025
+501,10000200,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Carlos Vázquez Álvarez,6,Secundaria,A,Mañana,2,2025
+502,10000201,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Amanda Aguilar Rivera,6,Secundaria,A,Mañana,2,2025
+503,10000202,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Andrés Pérez López,6,Secundaria,A,Mañana,2,2025
+504,10000203,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Verónica Hernández Suárez,6,Secundaria,A,Mañana,2,2025
+505,10000204,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Rubén Ramírez González,6,Secundaria,A,Mañana,2,2025
+506,10000205,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Patricia Rubio Herrera,6,Secundaria,A,Mañana,2,2025
+507,10000206,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Carlos Ortiz Suárez,6,Secundaria,A,Mañana,2,2025
+508,10000207,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Pilar Flores Ruiz,6,Secundaria,A,Mañana,2,2025
+509,10000208,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Miguel Aguilar Álvarez,6,Secundaria,A,Mañana,2,2025
+510,10000209,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Elena Martínez Ramírez,6,Secundaria,A,Mañana,2,2025
+511,10000210,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Antonio Ramírez Blanco,6,Secundaria,A,Mañana,2,2025
+512,10000211,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Isabel Morales Blanco,6,Secundaria,A,Mañana,2,2025
+513,10000212,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Rubén Rubio Iglesias,6,Secundaria,A,Mañana,2,2025
+514,10000213,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Rosa Cruz Díaz,6,Secundaria,A,Mañana,2,2025
+515,10000214,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Sebastián Romero Mendoza,6,Secundaria,A,Mañana,2,2025
+516,10000215,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Carolina Vargas Martínez,6,Secundaria,A,Mañana,2,2025
+517,10000216,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Tomás Herrera Navarro,6,Secundaria,A,Mañana,2,2025
+518,10000217,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Esperanza Serrano Vargas,6,Secundaria,A,Mañana,2,2025
+519,10000218,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Óscar Delgado Vázquez,6,Secundaria,A,Mañana,2,2025
+520,10000219,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Mónica Mendoza Ruiz,6,Secundaria,A,Mañana,2,2025
+521,10000220,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Eduardo Mendoza Gil,6,Secundaria,A,Mañana,2,2025
+522,10000221,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Camila Navarro Delgado,6,Secundaria,A,Mañana,2,2025
+523,10000222,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Ignacio Contreras Castro,6,Secundaria,A,Mañana,2,2025
+524,10000223,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Carmen Iglesias Sanz,6,Secundaria,A,Mañana,2,2025
+525,10000224,11,2025-02-01,Inscripción año escolar 2025 - Promovido a 6A,Carlos Alonso Delgado,6,Secundaria,A,Mañana,2,2025
+526,10000225,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Sergio Alonso Moreno,6,Secundaria,B,Mañana,2,2025
+527,10000226,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Diana Cruz Castro,6,Secundaria,B,Mañana,2,2025
+528,10000227,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Santiago Sanz Álvarez,6,Secundaria,B,Mañana,2,2025
+529,10000228,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Ana Serrano López,6,Secundaria,B,Mañana,2,2025
+530,10000229,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Javier Martínez Vargas,6,Secundaria,B,Mañana,2,2025
+531,10000230,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Isabella Moreno Navarro,6,Secundaria,B,Mañana,2,2025
+532,10000231,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Fernando Álvarez Romero,6,Secundaria,B,Mañana,2,2025
+533,10000232,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Inés Iglesias Contreras,6,Secundaria,B,Mañana,2,2025
+534,10000233,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Emilio Aguilar Marín,6,Secundaria,B,Mañana,2,2025
+535,10000234,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Valentina Gutiérrez García,6,Secundaria,B,Mañana,2,2025
+536,10000235,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Eduardo Vargas Martínez,6,Secundaria,B,Mañana,2,2025
+537,10000236,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,María Serrano Serrano,6,Secundaria,B,Mañana,2,2025
+538,10000237,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Nicolás Serrano Morales,6,Secundaria,B,Mañana,2,2025
+539,10000238,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Patricia Molina Hernández,6,Secundaria,B,Mañana,2,2025
+540,10000239,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Andrés Delgado Ortiz,6,Secundaria,B,Mañana,2,2025
+541,10000240,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Verónica Jiménez Marín,6,Secundaria,B,Mañana,2,2025
+542,10000241,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Manuel Ortiz Martín,6,Secundaria,B,Mañana,2,2025
+543,10000242,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Andrea Vázquez Ortega,6,Secundaria,B,Mañana,2,2025
+544,10000243,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Ignacio Sanz Ruiz,6,Secundaria,B,Mañana,2,2025
+545,10000244,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Inés Jiménez Vargas,6,Secundaria,B,Mañana,2,2025
+546,10000245,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Juan Pérez Delgado,6,Secundaria,B,Mañana,2,2025
+547,10000246,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Gabriela Marín Hernández,6,Secundaria,B,Mañana,2,2025
+548,10000247,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Alejandro Ortega Espinoza,6,Secundaria,B,Mañana,2,2025
+549,10000248,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Lorena Vázquez Blanco,6,Secundaria,B,Mañana,2,2025
+550,10000249,12,2025-02-01,Inscripción año escolar 2025 - Promovido a 6B,Luis Martín Gil,6,Secundaria,B,Mañana,2,2025
+551,10000300,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,Víctor Torres Ruiz,1,Secundaria,A,Mañana,2,2025
+552,10000301,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,Isabel Romero Ramírez,1,Secundaria,A,Mañana,2,2025
+553,10000302,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,Ignacio Gil Hernández,1,Secundaria,A,Mañana,2,2025
+554,10000303,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,Renata Ortega Romero,1,Secundaria,A,Mañana,2,2025
+555,10000304,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,David Mendoza Herrera,1,Secundaria,A,Mañana,2,2025
+556,10000305,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,Inés Gómez Jiménez,1,Secundaria,A,Mañana,2,2025
+557,10000306,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,David Ortiz Marín,1,Secundaria,A,Mañana,2,2025
+558,10000307,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,Cristina Martín Iglesias,1,Secundaria,A,Mañana,2,2025
+559,10000308,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,José Gómez Gómez,1,Secundaria,A,Mañana,2,2025
+560,10000309,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,Amanda Ortega Vargas,1,Secundaria,A,Mañana,2,2025
+561,10000310,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,Fernando Álvarez Sanz,1,Secundaria,A,Mañana,2,2025
+562,10000311,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,Pilar Torres Gutiérrez,1,Secundaria,A,Mañana,2,2025
+563,10000312,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,Pablo Muñoz Espinoza,1,Secundaria,A,Mañana,2,2025
+564,10000313,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,Beatriz García Delgado,1,Secundaria,A,Mañana,2,2025
+565,10000314,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,Álvaro Martínez Martín,1,Secundaria,A,Mañana,2,2025
+566,10000315,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,Diana Muñoz Rodríguez,1,Secundaria,A,Mañana,2,2025
+567,10000316,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,Rodrigo Romero Serrano,1,Secundaria,A,Mañana,2,2025
+568,10000317,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,Andrea Gutiérrez Rivera,1,Secundaria,A,Mañana,2,2025
+569,10000318,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,Alejandro Rubio Sánchez,1,Secundaria,A,Mañana,2,2025
+570,10000319,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,Martina Castro Vargas,1,Secundaria,A,Mañana,2,2025
+571,10000320,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,Sergio Mendoza Suárez,1,Secundaria,A,Mañana,2,2025
+572,10000321,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,Isabel Díaz Moreno,1,Secundaria,A,Mañana,2,2025
+573,10000322,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,Diego Rubio Contreras,1,Secundaria,A,Mañana,2,2025
+574,10000323,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,Esperanza Blanco Serrano,1,Secundaria,A,Mañana,2,2025
+575,10000324,1,2025-02-01,Inscripción año escolar 2025 - Curso 1A,Santiago Rivera Cruz,1,Secundaria,A,Mañana,2,2025
+576,10000325,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Nicolás Hernández Álvarez,1,Secundaria,B,Mañana,2,2025
+577,10000326,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Isabella Pérez Suárez,1,Secundaria,B,Mañana,2,2025
+578,10000327,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Gonzalo González Suárez,1,Secundaria,B,Mañana,2,2025
+579,10000328,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Victoria Aguilar Aguilar,1,Secundaria,B,Mañana,2,2025
+580,10000329,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Antonio Ramírez Delgado,1,Secundaria,B,Mañana,2,2025
+581,10000330,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Alejandra López Álvarez,1,Secundaria,B,Mañana,2,2025
+582,10000331,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Nicolás Vázquez Espinoza,1,Secundaria,B,Mañana,2,2025
+583,10000332,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Patricia Sanz Navarro,1,Secundaria,B,Mañana,2,2025
+584,10000333,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Gonzalo Castro Morales,1,Secundaria,B,Mañana,2,2025
+585,10000334,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Valeria Vázquez Flores,1,Secundaria,B,Mañana,2,2025
+586,10000335,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Pablo Vargas Espinoza,1,Secundaria,B,Mañana,2,2025
+587,10000336,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Diana Alonso Díaz,1,Secundaria,B,Mañana,2,2025
+588,10000337,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Francisco Lara López,1,Secundaria,B,Mañana,2,2025
+589,10000338,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Lorena Vázquez Torres,1,Secundaria,B,Mañana,2,2025
+590,10000339,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Daniel Domínguez Delgado,1,Secundaria,B,Mañana,2,2025
+591,10000340,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Ana Cruz Gómez,1,Secundaria,B,Mañana,2,2025
+592,10000341,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Manuel Domínguez Hernández,1,Secundaria,B,Mañana,2,2025
+593,10000342,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Camila Espinoza Martínez,1,Secundaria,B,Mañana,2,2025
+594,10000343,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Sebastián Aguilar Gutiérrez,1,Secundaria,B,Mañana,2,2025
+595,10000344,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Claudia Sánchez Lara,1,Secundaria,B,Mañana,2,2025
+596,10000345,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Juan Flores Aguilar,1,Secundaria,B,Mañana,2,2025
+597,10000346,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Isabel Mendoza Romero,1,Secundaria,B,Mañana,2,2025
+598,10000347,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Adrián Herrera Gómez,1,Secundaria,B,Mañana,2,2025
+599,10000348,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Lucía Ramos Romero,1,Secundaria,B,Mañana,2,2025
+600,10000349,2,2025-02-01,Inscripción año escolar 2025 - Curso 1B,Fernando Sánchez Álvarez,1,Secundaria,B,Mañana,2,2025

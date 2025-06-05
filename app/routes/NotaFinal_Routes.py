@@ -1,10 +1,15 @@
 from ..models.NotaFinal_Model import NotaFinal
+from ..models.NotaEstimada_Model import NotaEstimada
 from ..schemas.NotaFinal_schema import NotaFinalSchema
 from flask import request
 from app import db
 from flask_jwt_extended import jwt_required
 from flask_restx import Namespace, Resource
 from ..api_model.NotaFinal import ns, nota_final_model_request, nota_final_model_response
+from ..ml.notas_prediction_service import notas_prediction_service
+import logging
+
+logger = logging.getLogger(__name__)
 
 nota_final_schema = NotaFinalSchema()
 notas_finales_schema = NotaFinalSchema(many=True)
@@ -17,20 +22,28 @@ class NotaFinalList(Resource):
         """Lista todas las notas finales"""
         notas = NotaFinal.query.all()
         return notas_finales_schema.dump(notas)
-
+    
     @ns.expect(nota_final_model_request)
     @ns.marshal_with(nota_final_model_response, code=201)
     @jwt_required()
     def post(self):
-        """Crea una nueva nota final"""
+        """Crea una nueva nota final y actualiza la nota estimada con ML"""
         data = request.json
         nueva_nota = nota_final_schema.load(data)
         try:
+            # Guardar la nota final
             db.session.add(nueva_nota)
             db.session.commit()
+            
+            # Predecir y actualizar nota estimada usando ML
+            nota_estimada = notas_prediction_service.predict_and_update_nota_estimada(nueva_nota)
+            if nota_estimada:
+                logger.info(f"Nota estimada generada automáticamente: {nota_estimada.valor_estimado}")
+                
             return nota_final_schema.dump(nueva_nota), 201
         except Exception as e:
             db.session.rollback()
+            logger.error(f"Error al crear la nota final: {str(e)}")
             ns.abort(500, f"Error al crear la nota final: {str(e)}")
 
 

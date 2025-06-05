@@ -16,6 +16,9 @@ from flask_restx import Namespace, Resource
 from ..api_model.Evaluacion import ns, evaluacion_model_request, evaluacion_model_response
 from sqlalchemy import func
 
+# Importar el servicio de ML para predicciones
+from ..ml.notas_prediction_service import NotasPredictionService
+
 evaluacion_schema = EvaluacionSchema()
 evaluaciones_schema = EvaluacionSchema(many=True)
 
@@ -70,7 +73,7 @@ class EvaluacionList(Resource):
                 gestion_id=gestion_id,
                 materia_id=materia_id
             ).first()
-
+            
             if not nota_final:
                 nota_final = NotaFinal(
                     estudiante_ci=estudiante_ci,
@@ -81,8 +84,44 @@ class EvaluacionList(Resource):
                 db.session.add(nota_final)
             else:
                 nota_final.valor = nota_final_valor
-
+            
             db.session.commit()
+
+            # === INTEGRACIÓN ML: Predecir y actualizar nota estimada ===
+            try:
+                ml_service = NotasPredictionService()
+                prediccion = ml_service.predict_student_grade(
+                    estudiante_ci=estudiante_ci,
+                    materia_id=materia_id,
+                    gestion_id=gestion_id
+                )
+                
+                if prediccion and 'nota_estimada' in prediccion:
+                    # Buscar o crear NotaEstimada
+                    nota_estimada = NotaEstimada.query.filter_by(
+                        estudiante_ci=estudiante_ci,
+                        gestion_id=gestion_id,
+                        materia_id=materia_id
+                    ).first()
+
+                    if not nota_estimada:
+                        nota_estimada = NotaEstimada(
+                            estudiante_ci=estudiante_ci,
+                            gestion_id=gestion_id,
+                            materia_id=materia_id,
+                            valor_estimado=prediccion['nota_estimada'],
+                            razon_estimacion=prediccion.get('razon', 'Predicción ML basada en rendimiento académico')
+                        )
+                        db.session.add(nota_estimada)
+                    else:
+                        nota_estimada.valor_estimado = prediccion['nota_estimada']
+                        nota_estimada.razon_estimacion = prediccion.get('razon', 'Predicción ML actualizada')
+
+                    db.session.commit()
+                    
+            except Exception as ml_error:
+                # No fallar si hay error en ML, solo registrar
+                print(f"Error en predicción ML: {str(ml_error)}")
 
             return evaluacion_schema.dump(nueva_evaluacion), 201
 
@@ -362,8 +401,44 @@ class AsistenciaPost(Resource):
                 db.session.add(nota_final)
             else:
                 nota_final.valor = nota_final_valor
-
+            
             db.session.commit()
+
+            # === INTEGRACIÓN ML: Predecir y actualizar nota estimada ===
+            try:
+                ml_service = NotasPredictionService()
+                prediccion = ml_service.predict_student_grade(
+                    estudiante_ci=estudiante_ci,
+                    materia_id=materia_id,
+                    gestion_id=gestion_id
+                )
+                
+                if prediccion and 'nota_estimada' in prediccion:
+                    # Buscar o crear NotaEstimada
+                    nota_estimada = NotaEstimada.query.filter_by(
+                        estudiante_ci=estudiante_ci,
+                        gestion_id=gestion_id,
+                        materia_id=materia_id
+                    ).first()
+
+                    if not nota_estimada:
+                        nota_estimada = NotaEstimada(
+                            estudiante_ci=estudiante_ci,
+                            gestion_id=gestion_id,
+                            materia_id=materia_id,
+                            valor_estimado=prediccion['nota_estimada'],
+                            razon_estimacion=prediccion.get('razon', 'Predicción ML basada en rendimiento académico')
+                        )
+                        db.session.add(nota_estimada)
+                    else:
+                        nota_estimada.valor_estimado = prediccion['nota_estimada']
+                        nota_estimada.razon_estimacion = prediccion.get('razon', 'Predicción ML actualizada')
+
+                    db.session.commit()
+                    
+            except Exception as ml_error:
+                # No fallar si hay error en ML, solo registrar
+                print(f"Error en predicción ML: {str(ml_error)}")
 
             return evaluacion_schema.dump(nueva_evaluacion), 201
 

@@ -1,0 +1,14 @@
+{
+  "training_date": "2025-06-03T22:15:02.698329",
+  "models": [
+    "enrollment",
+    "course_recommendation",
+    "performance"
+  ],
+  "data_stats": {
+    "students": 900,
+    "courses": 12,
+    "enrollments": 600,
+    "teachers": 50
+  }
+}

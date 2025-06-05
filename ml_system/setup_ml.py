@@ -30,6 +30,23 @@ class MLSetup:
         self.models_dir = self.ml_dir / "modelos"
         self.data_dir = self.ml_dir / "data"
         self.scripts_dir = self.ml_dir / "scripts"
+        self.docs_dir = self.ml_dir / "docs"
+        self.tests_dir = self.ml_dir / "tests"
+        
+        # Create directories if they don't exist
+        for dir_path in [self.ml_dir, self.models_dir, self.data_dir, 
+                        self.scripts_dir, self.docs_dir, self.tests_dir]:
+            dir_path.mkdir(exist_ok=True)
+              # Setup steps tracking
+        self.setup_steps = {
+            "create_directories": False,
+            "install_dependencies": False,
+            "extract_data": False,
+            "train_models": False,
+            "integrate_service": False,
+            "test_integration": False,
+            "create_documentation": False
+        }
         
     def crear_estructura_directorios(self):
         """Crea la estructura de directorios necesaria"""
@@ -139,8 +156,7 @@ ML_LOG_FILE={self.ml_dir}/ml_system.log
         except Exception as e:
             logger.error(f"❌ Error configurando variables: {e}")
             return False
-    
-    def ejecutar_extraccion_datos(self):
+      def ejecutar_extraccion_datos(self):
         """Ejecuta la extracción de datos desde la BD"""
         logger.info("🗃️ Iniciando extracción de datos...")
         
@@ -149,7 +165,7 @@ ML_LOG_FILE={self.ml_dir}/ml_system.log
             os.chdir(self.scripts_dir)
             
             # Ejecutar extracción
-            extractor_path = self.scripts_dir / "data_extractor.py"
+            extractor_path = self.scripts_dir / "standalone_data_extractor.py"
             if extractor_path.exists():
                 logger.info("   📊 Ejecutando extractor de datos...")
                 result = subprocess.run([sys.executable, str(extractor_path)], 
@@ -162,7 +178,7 @@ ML_LOG_FILE={self.ml_dir}/ml_system.log
                     logger.error(f"   ❌ Error en extracción: {result.stderr}")
                     return False
             else:
-                logger.warning("   ⚠️ Archivo extractor no encontrado, saltando...")
+                logger.warning(f"   ⚠️ Archivo extractor no encontrado en {extractor_path}, saltando...")
                 return True
                 
         except Exception as e:
@@ -171,15 +187,14 @@ ML_LOG_FILE={self.ml_dir}/ml_system.log
         finally:
             # Volver al directorio original
             os.chdir(self.project_root)
-    
-    def ejecutar_entrenamiento(self):
+      def ejecutar_entrenamiento(self):
         """Ejecuta el entrenamiento de modelos"""
         logger.info("🤖 Iniciando entrenamiento de modelos...")
         
         try:
             os.chdir(self.scripts_dir)
             
-            trainer_path = self.scripts_dir / "model_trainer.py"
+            trainer_path = self.scripts_dir / "train_models_new.py"
             if trainer_path.exists():
                 logger.info("   🧠 Entrenando modelos ML...")
                 result = subprocess.run([sys.executable, str(trainer_path)], 
@@ -190,11 +205,12 @@ ML_LOG_FILE={self.ml_dir}/ml_system.log
                     
                     # Verificar que se generaron los modelos
                     modelos_esperados = [
-                        "modelo_rendimiento_regresion.pkl",
-                        "modelo_rendimiento_clasificacion.pkl",
-                        "modelo_rendimiento_scaler.pkl",
-                        "modelo_rendimiento_label_encoder.pkl",
-                        "features_principales.pkl"
+                        "enrollment_prediction_model.pkl", 
+                        "course_recommendation_model.pkl",
+                        "performance_prediction_model.pkl",
+                        "enrollment_prediction_scaler.pkl",
+                        "course_recommendation_scaler.pkl",
+                        "performance_prediction_scaler.pkl"
                     ]
                     
                     modelos_encontrados = 0

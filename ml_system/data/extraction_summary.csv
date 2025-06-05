@@ -1,0 +1,5 @@
+dataset,records,columns,extracted
+students,900,"['estudiante_id', 'nombre', 'fechaNacimiento', 'telefono', 'apoderado', 'total_inscripciones', 'edad']",True
+courses,12,"['curso_id', 'nombre', 'descripcion', 'paralelo', 'turno', 'nivel', 'total_inscripciones']",True
+enrollments,600,"['inscripcion_id', 'estudiante_ci', 'curso_id', 'fecha', 'estado', 'estudiante_nombre', 'curso_nombre', 'curso_nivel', 'curso_paralelo', 'curso_turno', 'mes_inscripcion', 'año_inscripcion']",True
+teachers,50,"['docente_ci', 'nombre', 'email', 'esDocente', 'total_materias']",True

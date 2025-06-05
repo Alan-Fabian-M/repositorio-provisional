@@ -8,9 +8,7 @@ from . import models
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
-    app.config["JWT_HEADER_TYPE"] = ""
-
-    # Debug: Verificar configuración cargada
+    app.config["JWT_HEADER_TYPE"] = ""    # Debug: Verificar configuración cargada
     print("DB URI:", app.config.get('SQLALCHEMY_DATABASE_URI'))    # Inicializar extensiones
     db.init_app(app)
     jwt.init_app(app)
@@ -18,6 +16,10 @@ def create_app():
     mi.init_app(app, db)
     api.init_app(app)
     cors.init_app(app)
+    
+    # Register ML Blueprint
+    from app.ml import ml_bp
+    app.register_blueprint(ml_bp, url_prefix='/ml')
     
     with app.app_context():
         # Crear todas las tablas si no existen
@@ -71,7 +73,8 @@ def create_app():
     from .routes.EvaluacionIntegral_Routes import ns as porcentaje_ns
     from .routes.TipoEvaluacion_Routes import ns as tipoEvaluacion_ns
     
-    
+    # Import ML blueprint
+    from .ml import ml_bp
 
     api.add_namespace(estudiante_ns)
     api.add_namespace(authentication_ns)
@@ -87,6 +90,5 @@ def create_app():
     api.add_namespace(tipoEvaluacion_ns)
     api.add_namespace(porcentaje_ns)
     api.add_namespace(gestion_ns)
-    
     
     return app
